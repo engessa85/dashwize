@@ -71,13 +71,12 @@ function SignUp() {
                 <img className="icon" src="assets/google.png" alt="error" />
                 <p>Sign in With Google</p>
               </button>
+              <div className="signup__wrapper__left__container--haveaccount">
+                <p>
+                  Already Have an account? <Link to="/signin">Sig in</Link>
+                </p>
+              </div>
             </form>
-
-            <div className="signup__wrapper__left__container--haveaccount">
-              <p>
-                Already Have an account? <Link to="/signin">Sig in</Link>
-              </p>
-            </div>
           </div>
         </div>
       </div>
