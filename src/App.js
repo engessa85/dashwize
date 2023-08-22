@@ -29,8 +29,9 @@ function App() {
       ) : (
         <BrowserRouter>
           <Routes>
-            <Route exact path="/home" element={<Home />} />
-            <Route exact path="/" element={<SignIn />} />
+            <Route exact path="/" element={<SignUp />} />
+            <Route exact path="/signin" element={<SignIn />} />
+            {/* <Route exact path="/signup" element={<SignUp />} /> */}
           </Routes>
         </BrowserRouter>
       )}
