@@ -17,7 +17,7 @@ function App() {
   }, []);
   return (
     <>
-      {false ? (
+      {loader ? (
         <div className="preloader">
           <div className="preloader__circle">
             <PuffLoader color="#FFFFFF" size={250} />
