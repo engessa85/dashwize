@@ -1,5 +1,4 @@
 import React from "react";
-import "../sass/pages/_index.scss";
 
 function SignIn() {
   return (

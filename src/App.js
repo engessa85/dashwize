@@ -16,7 +16,7 @@ function App() {
   }, []);
   return (
     <>
-      {loader ? (
+      {false ? (
         <div className="preloader">
           <div className="preloader__circle">
             <PuffLoader color="#FFFFFF" size={250} />
@@ -29,9 +29,9 @@ function App() {
       ) : (
         <BrowserRouter>
           <Routes>
-            <Route exact path="/" element={<SignUp />} />
+            <Route exact path="/" element={<Home />} />
             <Route exact path="/signin" element={<SignIn />} />
-            {/* <Route exact path="/signup" element={<SignUp />} /> */}
+            <Route exact path="/signup" element={<SignUp />} />
           </Routes>
         </BrowserRouter>
       )}
