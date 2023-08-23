@@ -2,6 +2,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import "./sass/main.scss";
+import "../src/bootstrap.min.css"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { PuffLoader, ScaleLoader } from "react-spinners";
 import { useState, useEffect } from "react";
