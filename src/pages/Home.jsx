@@ -80,15 +80,15 @@ function Home() {
               <div className="para">
                 <div className="chek">
                   <img src="assets/checkbox.png" alt="error" />
-                  Mauris pellentesque congue libero nec
+                  <p>Mauris pellentesque congue libero nec</p>
                 </div>
                 <div className="chek">
                   <img src="assets/checkbox.png" alt="error" />
-                  Suspendisse mollis tincidunt
+                  <p>Suspendisse mollis tincidunt</p>
                 </div>
                 <div className="chek">
                   <img src="assets/checkbox.png" alt="error" />
-                  Praesent varius justo vel justo pulvinar{" "}
+                  <p>Praesent varius justo vel justo pulvinar</p>
                 </div>
               </div>
               <div className="buttons">
