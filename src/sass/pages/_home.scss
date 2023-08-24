@@ -265,7 +265,6 @@
           height: 20px;
           margin-right: 10px;
         }
-        
 
         @include m.breakpointsDown(medium) {
           justify-content: center;
@@ -341,6 +340,119 @@
       height: 464px;
       @include m.breakpointsDown(medium) {
         display: none;
+      }
+    }
+  }
+}
+
+.fourth-section {
+  background-color: v.$backgroun-primary-color;
+
+  padding-top: 200px;
+  padding-bottom: 200px;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    min-height: 125px;
+    top: 0;
+    left: 0;
+    background: url("../../../public/assets/downwave.png") no-repeat;
+    background-size: cover;
+    @include m.breakpointsDown(medium) {
+      display: none;
+    }
+  }
+
+  @include m.breakpointsDown(medium) {
+    padding: 100px;
+  }
+
+  &__rowone {
+    padding: 2rem;
+    text-align: center;
+
+    .features {
+      width: 74px;
+      height: 22px;
+      background-color: rgba(220, 252, 231, 1);
+      color: rgba(34, 197, 94, 1);
+      font-size: 12px;
+      font-weight: 500;
+      border-radius: 38px;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 15px;
+    }
+    .title {
+      font-size: 36px;
+      font-weight: 700;
+      color: rgba(42, 51, 66, 1);
+      line-height: 1.2;
+      margin-bottom: 15px;
+
+      @include m.breakpointsDown(medium) {
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 35px;
+      }
+    }
+
+    .para {
+      color: rgba(85, 105, 135, 1);
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 35px;
+      @include m.breakpointsDown(medium) {
+        text-align: center;
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+    }
+
+    .image {
+      img {
+        width: 621px;
+        height: 621px;
+
+        @include m.breakpointsDown(medium) {
+          width: 321px;
+          height: 321px;
+        }
+      }
+    }
+  }
+
+  &__rowtwo {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .image {
+        width: 72px;
+        height: 72px;
+        margin-bottom: 20px;
+      }
+
+      .title {
+        font-weight: 700;
+        font-size: 24px;
+        color: rgba(42, 51, 66, 1);
+        margin-bottom: 20px;
+      }
+
+      .lead {
+        font-weight: 500;
+        font-size: 16px;
+        text-align: center;
       }
     }
   }

@@ -121,6 +121,61 @@ function Home() {
           </Row>
         </Container>
       </section>
+
+      <section className="fourth-section">
+        <Container>
+          <Row className="fourth-section__rowone">
+            <Col md={12} sm={12}>
+              <div className="features">FEATURES</div>
+              <h1 className="title">
+                Gain more insight into how people use your
+              </h1>
+
+              <p className="para">
+                With our integrated CRM, project management, collaboration and
+                invoicing capabilities,
+                <br /> you can manage every aspect of your business in one
+                secure platform.
+              </p>
+              <div className="image">
+                <img src="assets/sectionFour.png" alt="error" />
+              </div>
+            </Col>
+          </Row>
+          <Row className="fourth-section__rowtwo">
+            <Col className="col" md={4} sm={12}>
+              <img className="image" src="assets/frameleft.png" alt="error" />
+              <h1 className="title">Measure your performance</h1>
+              <p className="lead">
+                Stay connected with your team and
+                <br /> make quick decisions wherever
+                <br />
+                you are.
+              </p>
+            </Col>
+            <Col className="col" md={4} sm={12}>
+              <img className="image" src="assets/frameleft.png" alt="error" />
+              <h1 className="title">Measure your performance</h1>
+              <p className="lead">
+                Stay connected with your team and
+                <br /> make quick decisions wherever
+                <br />
+                you are.
+              </p>
+            </Col>
+            <Col className="col" md={4} sm={12}>
+              <img className="image" src="assets/frameleft.png" alt="error" />
+              <h1 className="title">Measure your performance</h1>
+              <p className="lead">
+                Stay connected with your team and
+                <br /> make quick decisions wherever
+                <br />
+                you are.
+              </p>
+            </Col>
+          </Row>
+        </Container>
+      </section>
     </div>
   );
 }
