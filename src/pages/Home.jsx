@@ -133,9 +133,8 @@ function Home() {
 
               <p className="para">
                 With our integrated CRM, project management, collaboration and
-                invoicing capabilities,
-                <br /> you can manage every aspect of your business in one
-                secure platform.
+                invoicing capabilities, you can manage every aspect of your
+                business in one secure platform.
               </p>
               <div className="image">
                 <img src="assets/sectionFour.png" alt="error" />
@@ -154,23 +153,21 @@ function Home() {
               </p>
             </Col>
             <Col className="col" md={4} sm={12}>
-              <img className="image" src="assets/frameleft.png" alt="error" />
-              <h1 className="title">Measure your performance</h1>
+              <img className="image" src="assets/framecenter.png" alt="error" />
+              <h1 className="title">Custom analytics</h1>
               <p className="lead">
-                Stay connected with your team and
-                <br /> make quick decisions wherever
-                <br />
-                you are.
+                Get a complete sales dashboard in
+                <br /> the cloud. See activity, revenue and <br /> social
+                metrics all in one place.
               </p>
             </Col>
             <Col className="col" md={4} sm={12}>
               <img className="image" src="assets/frameleft.png" alt="error" />
-              <h1 className="title">Measure your performance</h1>
+              <h1 className="title">Team management</h1>
               <p className="lead">
-                Stay connected with your team and
-                <br /> make quick decisions wherever
-                <br />
-                you are.
+                Our calendar lets you know what is <br /> happening with
+                customer and <br />
+                projects so you
               </p>
             </Col>
           </Row>
