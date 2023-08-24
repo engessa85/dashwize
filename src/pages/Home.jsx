@@ -3,6 +3,8 @@ import TopBar from "../components/TopBar";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 function Home() {
   return (
@@ -79,15 +81,27 @@ function Home() {
               </h1>
               <div className="para">
                 <div className="chek">
-                  <img className="icon" src="assets/linkedin.png" alt="error" />
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ color: "#00ff80" }}
+                    className="icon"
+                  />
                   <p>Mauris pellentesque congue libero nec</p>
                 </div>
                 <div className="chek">
-                  <img className="icon" src="assets/checkbox.png" alt="error" />
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ color: "#00ff80" }}
+                    className="icon"
+                  />
                   <p>Suspendisse mollis tincidunt</p>
                 </div>
                 <div className="chek">
-                  <img  className="icon" src="assets/checkbox.png" alt="error" />
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ color: "#00ff80" }}
+                    className="icon"
+                  />
                   <p>Praesent varius justo vel justo pulvinar</p>
                 </div>
               </div>
