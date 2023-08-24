@@ -44,7 +44,7 @@
       margin-bottom: 30px;
       @include m.breakpointsDown(medium) {
         text-align: center;
-        font-size: 10px;
+        font-size: 14px;
       }
     }
 
@@ -178,7 +178,7 @@
       margin-bottom: 35px;
       @include m.breakpointsDown(medium) {
         text-align: center;
-        font-size: 10px;
+        font-size: 14px;
         margin-bottom: 15px;
       }
     }
@@ -252,10 +252,9 @@
 
     .para {
       color: rgba(136, 150, 171, 1);
-      font-size: 20px;
       font-weight: 500;
       margin-bottom: 35px;
-
+      font-size: 20px;
 
       .chek {
         margin-bottom: 5px;
@@ -265,10 +264,12 @@
           height: 20px;
           margin-right: 10px;
         }
+        
 
         @include m.breakpointsDown(medium) {
           justify-content: center;
           align-items: center;
+          font-size: 14px;
         }
       }
     }
