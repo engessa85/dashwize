@@ -69,6 +69,44 @@ function Home() {
           </Row>
         </Container>
       </section>
+
+      <section className="third-section">
+        <Container>
+          <Row>
+            <Col md={6} sm={12} className="third-section__left">
+              <h1 className="title">
+                Join 6,000+ <br /> startups growing <br /> with dashwize
+              </h1>
+              <div className="para">
+                <div className="chek">
+                  <img src="assets/checkbox.png" alt="error" />
+                  Mauris pellentesque congue libero nec
+                </div>
+                <div className="chek">
+                  <img src="assets/checkbox.png" alt="error" />
+                  Suspendisse mollis tincidunt
+                </div>
+                <div className="chek">
+                  <img src="assets/checkbox.png" alt="error" />
+                  Praesent varius justo vel justo pulvinar{" "}
+                </div>
+              </div>
+              <div className="buttons">
+                <Link className="signupbutton" to="/signup">
+                  Learn More
+                </Link>
+                <Link className="demobuttom" to="/">
+                  Get Started
+                </Link>
+              </div>
+            </Col>
+
+            <Col md={6} sm={12} className="first-section__right">
+              <img src="assets/sectionThree.png" alt="error" />
+            </Col>
+          </Row>
+        </Container>
+      </section>
     </div>
   );
 }
