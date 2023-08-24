@@ -79,15 +79,15 @@ function Home() {
               </h1>
               <div className="para">
                 <div className="chek">
-                  <img src="assets/checkbox.png" alt="error" />
+                  <img className="icon" src="assets/linkedin.png" alt="error" />
                   <p>Mauris pellentesque congue libero nec</p>
                 </div>
                 <div className="chek">
-                  <img src="assets/checkbox.png" alt="error" />
+                  <img className="icon" src="assets/checkbox.png" alt="error" />
                   <p>Suspendisse mollis tincidunt</p>
                 </div>
                 <div className="chek">
-                  <img src="assets/checkbox.png" alt="error" />
+                  <img  className="icon" src="assets/checkbox.png" alt="error" />
                   <p>Praesent varius justo vel justo pulvinar</p>
                 </div>
               </div>
