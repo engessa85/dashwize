@@ -418,8 +418,8 @@
         height: 621px;
 
         @include m.breakpointsDown(medium) {
-          width: 321px;
-          height: 321px;
+          width: 121px;
+          height: 121px;
         }
       }
     }
@@ -447,12 +447,19 @@
         font-size: 24px;
         color: rgba(42, 51, 66, 1);
         margin-bottom: 20px;
+        @include m.breakpointsDown(medium) {
+          text-align: center;
+        }
       }
 
       .lead {
         font-weight: 500;
         font-size: 16px;
         text-align: center;
+        @include m.breakpointsDown(medium) {
+          text-align: center;
+          font-size: 14px;
+        }
       }
     }
   }
