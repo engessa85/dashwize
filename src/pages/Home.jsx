@@ -173,6 +173,165 @@ function Home() {
           </Row>
         </Container>
       </section>
+
+      <section className="fifth-section">
+        <Container>
+          <Row className="fifth-section__rowone">
+            <Col md={12} sm={12}>
+              <div className="features">
+                <span>PRICING</span>
+              </div>
+              <h1 className="title">Dashwize pricing plan for your startup</h1>
+              <p className="para">
+                Pricing that scales with your business immediately.
+              </p>
+            </Col>
+          </Row>
+          <Row className="fifth-section__rowtwo">
+            <Col className="col" md={4} sm={12}>
+              <div className="features">PRICING</div>
+              <h1 className="title">Basic Plan</h1>
+              <div className="pricing">
+                <p>10/mth</p>
+              </div>
+              <p className="lead">Billed Anually</p>
+              <div className="para">
+                <div className="chek">
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ color: "#22C55E" }}
+                    className="icon"
+                  />
+                  <p>Complete documentation</p>
+                </div>
+                <div className="chek">
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ color: "#22C55E" }}
+                    className="icon"
+                  />
+                  <p>Working materials in Figma</p>
+                </div>
+                <div className="chek">
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ color: "#22C55E" }}
+                    className="icon"
+                  />
+                  <p>100GB cloud storage</p>
+                </div>
+                <div className="chek">
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ color: "#22C55E" }}
+                    className="icon"
+                  />
+                  <p>500 team members</p>
+                </div>
+              </div>
+              <div className="button">
+                <Link className="demobuttom" to="/">
+                  Request a Demo
+                </Link>
+              </div>
+            </Col>
+            <Col className="col" md={4} sm={12}>
+              <div className="features">PRICING</div>
+              <h1 className="title">Basic Plan</h1>
+              <div className="pricing">
+                <p>99/mth</p>
+              </div>
+              <p className="lead">Billed Anually</p>
+              <div className="para">
+                <div className="chek">
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ color: "#22C55E" }}
+                    className="icon"
+                  />
+                  <p>Complete documentation</p>
+                </div>
+                <div className="chek">
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ color: "#22C55E" }}
+                    className="icon"
+                  />
+                  <p>Working materials in Figma</p>
+                </div>
+                <div className="chek">
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ color: "#22C55E" }}
+                    className="icon"
+                  />
+                  <p>100GB cloud storage</p>
+                </div>
+                <div className="chek">
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ color: "#22C55E" }}
+                    className="icon"
+                  />
+                  <p>500 team members</p>
+                </div>
+              </div>
+              <div className="button">
+                <Link className="demobuttom" to="/">
+                  Request a Demo
+                </Link>
+              </div>
+            </Col>
+            <Col className="col" md={4} sm={12}>
+              <div className="features">PRICING</div>
+              <h1 className="title">Basic Plan</h1>
+              <div className="pricing">
+                <p>799/mth</p>
+              </div>
+              <p className="lead">Billed Anually</p>
+              <div className="para">
+                <div className="chek">
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ color: "#22C55E" }}
+                    className="icon"
+                  />
+                  <p>Complete documentation</p>
+                </div>
+                <div className="chek">
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ color: "#22C55E" }}
+                    className="icon"
+                  />
+                  <p>Working materials in Figma</p>
+                </div>
+                <div className="chek">
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ color: "#22C55E" }}
+                    className="icon"
+                  />
+                  <p>100GB cloud storage</p>
+                </div>
+                <div className="chek">
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    style={{ color: "#22C55E" }}
+                    className="icon"
+                  />
+                  <p>500 team members</p>
+                </div>
+              </div>
+              <div className="button">
+                <Link className="demobuttom" to="/">
+                  Request a Demo
+                </Link>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
     </div>
   );
 }
