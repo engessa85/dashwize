@@ -5,6 +5,12 @@ import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebook,
+  faTwitter,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
+import PersonIcon from "../components/PersonIcon";
 
 function Home() {
   return (
@@ -237,7 +243,7 @@ function Home() {
             </Col>
             <Col className="col" md={4} sm={12}>
               <div className="features">PRICING</div>
-              <h1 className="title">Basic Plan</h1>
+              <h1 className="title">Freelancer Plan</h1>
               <div className="pricing">
                 <p>99/mth</p>
               </div>
@@ -284,7 +290,7 @@ function Home() {
             </Col>
             <Col className="col" md={4} sm={12}>
               <div className="features">PRICING</div>
-              <h1 className="title">Basic Plan</h1>
+              <h1 className="title">Enterprise Plane</h1>
               <div className="pricing">
                 <p>799/mth</p>
               </div>
@@ -329,6 +335,65 @@ function Home() {
                 </Link>
               </div>
             </Col>
+          </Row>
+        </Container>
+      </section>
+
+      <section className="sixth-section">
+        <Container>
+          <Row className="sixth-section__rowone">
+            <Col md={12} sm={12}>
+              <div className="features">TEAM</div>
+              <h1 className="title">Our team is the best in the business</h1>
+              <p className="para">
+                Highly professional and capable of running your business across
+                all digital channels.
+              </p>
+            </Col>
+          </Row>
+          <Row className="sixth-section__rowtwo">
+            <PersonIcon
+              iconlink={"assets/ellipse1.png"}
+              name={"Macauley Herring"}
+              position={"CEO & Founder"}
+            />
+            <PersonIcon
+              iconlink={"assets/ellipse2.png"}
+              name={"Ivan Mathews"}
+              position={"CTO"}
+            />
+            <PersonIcon
+              iconlink={"assets/ellipse3.png"}
+              name={"Elen Benitez"}
+              position={"CPO"}
+            />
+            <PersonIcon
+              iconlink={"assets/ellipse4.png"}
+              name={"Kacy Wade"}
+              position={"Customer Success"}
+            />
+          </Row>
+          <Row className="sixth-section__rowtwo">
+            <PersonIcon
+              iconlink={"assets/ellipse5.png"}
+              name={"Alya Levine"}
+              position={"Backend Developer"}
+            />
+            <PersonIcon
+              iconlink={"assets/ellipse6.png"}
+              name={"Rosemary Hernandez"}
+              position={"iOS Developer"}
+            />
+            <PersonIcon
+              iconlink={"assets/ellipse7.png"}
+              name={"Theo Morales"}
+              position={"Frontend Developer"}
+            />
+            <PersonIcon
+              iconlink={"assets/ellipse8.png"}
+              name={"Ishmael Dunlop"}
+              position={"Product Designer"}
+            />
           </Row>
         </Container>
       </section>
