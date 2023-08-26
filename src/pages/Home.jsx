@@ -5,12 +5,8 @@ import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
-import {
-  faFacebook,
-  faTwitter,
-  faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
 import PersonIcon from "../components/PersonIcon";
+import ContactIcon from "../components/ContactIcon";
 
 function Home() {
   return (
@@ -393,6 +389,31 @@ function Home() {
               iconlink={"assets/ellipse8.png"}
               name={"Ishmael Dunlop"}
               position={"Product Designer"}
+            />
+          </Row>
+        </Container>
+      </section>
+
+      <section className="seveth-section">
+        <Container>
+          <Row className="seveth-section__row">
+            <ContactIcon
+              imagelink={"assets/seven1.png"}
+              title={"Email"}
+              lead={"Lorem ipsum dolor sit amet"}
+              info={"contact@flex.co"}
+            />
+            <ContactIcon
+              imagelink={"assets/seven2.png"}
+              title={"Phone"}
+              lead={"Lorem ipsum dolor sit amet"}
+              info={"+96659882026"}
+            />
+            <ContactIcon
+              imagelink={"assets/seven3.png"}
+              title={"Office"}
+              lead={"Lorem ipsum dolor sit amet"}
+              info={"1686, Geraldine Lane"}
             />
           </Row>
         </Container>

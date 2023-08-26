@@ -704,9 +704,8 @@
   background-color: v.$backgroun-primary-color;
 
   padding-top: 200px;
-  padding-bottom: 200px;
+  padding-bottom: 100px;
   position: relative;
-  
 
   @include m.breakpointsDown(medium) {
     padding-top: 100px;
@@ -777,13 +776,12 @@
     justify-content: center;
     padding-left: 100px;
     padding-right: 100px;
-    margin-bottom:50px ;
+    margin-bottom: 50px;
 
     @include m.breakpointsDown(medium) {
-      margin-bottom:10px ;
+      margin-bottom: 10px;
     }
-  
-    
+
     @include m.breakpointsDown(medium) {
       flex-direction: column;
     }
@@ -832,6 +830,58 @@
           height: 20px;
           margin-right: 10px;
         }
+      }
+    }
+  }
+}
+
+.seveth-section {
+  background-color: v.$backgroun-secondary-color;
+
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+  &__row {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 100px;
+
+    @include m.breakpointsDown(medium) {
+      flex-direction: column;
+      gap: 40px;
+      
+    }
+
+    .col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 359px;
+      height: 218px;
+      img {
+        width: 72px;
+        height: 72px;
+        margin-bottom: 20px;
+      }
+
+      .title {
+        color: rgba(255, 255, 255, 1);
+        font-weight: 700;
+        font-size: 30px;
+      }
+
+      .lead {
+        color: rgba(85, 105, 135, 1);
+        font-weight: 500;
+        font-size: 20px;
+      }
+
+      .contact {
+        color: rgba(34, 197, 94, 1);
+        font-weight: 500;
+        font-size: 20px;
       }
     }
   }
