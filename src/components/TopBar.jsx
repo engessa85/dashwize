@@ -1,10 +1,27 @@
-import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 
 function TopBar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [userAuthorized, setUserAuthorized] = useState(true);
+  const email = useSelector((state) => state.sigin.email);
+  const navigate = useNavigate()
+  useEffect(() => {
+    const tokenIs = localStorage.getItem("accesstoken");
+    if (tokenIs !== null) {
+      setUserAuthorized(false);
+    }
+  }, []);
+
+  const handleLogout = (e)=>{
+    // e.preventDefault();
+    localStorage.removeItem("accesstoken")
+    localStorage.removeItem("refreshtoken")
+    localStorage.removeItem("email")
+    navigate("/")
+
+  }
 
   return (
     <nav>
@@ -32,14 +49,32 @@ function TopBar() {
           </li>
         </div>
 
-        <li>
-          <NavLink to="/signin">Log In</NavLink>
-        </li>
-        <li>
-          <NavLink to="/signup" className="button">
-            Sign Up
-          </NavLink>
-        </li>
+        {userAuthorized && (
+          <li>
+            <NavLink to="/signin">Log In</NavLink>
+          </li>
+        )}
+        {userAuthorized && (
+          <li>
+            <NavLink to="/signup" className="button">
+              Sign Up
+            </NavLink>
+          </li>
+        )}
+        {userAuthorized === false && (
+          <li>
+            <NavLink to="/signup" className="">
+            {email}
+            </NavLink>
+          </li>
+        )}
+        {userAuthorized === false && (
+          <li>
+            <a href="" className="button" onClick={handleLogout}>
+              Log Out
+            </a>
+          </li>
+        )}
       </ul>
     </nav>
   );

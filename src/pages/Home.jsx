@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import TopBar from "../components/TopBar";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import { HashLink } from "react-router-hash-link";
@@ -8,7 +8,15 @@ import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import PersonIcon from "../components/PersonIcon";
 import ContactIcon from "../components/ContactIcon";
 
+
 function Home() {
+  const [userAuthorized, setUserAuthorized] = useState(true);
+  useEffect(() => {
+    const tokenIs = localStorage.getItem("accesstoken");
+    if (tokenIs !== null) {
+      setUserAuthorized(false);
+    }
+  }, []);
   return (
     <div>
       <TopBar />
@@ -29,9 +37,15 @@ function Home() {
                 <Link className="demobuttom" to="/">
                   Request a Demo
                 </Link>
-                <Link className="signupbutton" to="/signup">
-                  Sign Up
-                </Link>
+                {userAuthorized ? (
+                  <Link className="signupbutton" to="/signup">
+                    Sign Up
+                  </Link>
+                ) : (
+                  <Link className="signupbutton" to="/signup">
+                    Home
+                  </Link>
+                )}
               </div>
             </Col>
 

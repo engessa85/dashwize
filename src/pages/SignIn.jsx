@@ -2,15 +2,23 @@ import React from "react";
 import { useState, useEffect } from "react";
 import signInApiCall from "../services/signInApiCall";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ThreeCircles } from "react-loader-spinner";
 import { BiErrorCircle } from "react-icons/bi";
 
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { token, pending, error } = useSelector((state) => state.sigin);
+  const { pending, error } = useSelector((state) => state.sigin);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const tokenIs = localStorage.getItem("accesstoken");
+    if (tokenIs !== null) {
+      navigate("/");
+    }
+  });
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -104,9 +112,9 @@ function SignIn() {
                   wrapperClass=""
                   visible={true}
                   ariaLabel="three-circles-rotating"
-                  outerCircleColor=""
+                  outerCircleColor="#22C55E"
                   innerCircleColor="#2A3342"
-                  middleCircleColor=""
+                  middleCircleColor="#22C55E"
                 />
               </div>
             )}

@@ -14,7 +14,7 @@ const signInApiCall = async ({ email, password }, dispatch) => {
     dispatch(startUpdate());
     const response = await axios.post(url, body, config);
 
-    dispatch(startSuccess(response.data));
+    dispatch(startSuccess({res:response.data, email:email}));
   } catch (error) {
     dispatch(startError(error));
     
