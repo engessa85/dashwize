@@ -2,7 +2,7 @@ import axios from "axios";
 import { startUpdate, startSuccess, startError } from "../redux/signinSlice";
 
 const signInApiCall = async ({ email, password }, dispatch) => {
-  const url = "http://engessa1985.pythonanywhere.com/api/token/";
+  const url = "https://engessa1985.pythonanywhere.com/api/token/";
   const config = {
     headers: {
       "Content-Type": "application/json",
