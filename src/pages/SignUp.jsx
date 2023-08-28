@@ -28,6 +28,7 @@ function SignUp() {
                   className="input"
                   placeholder=""
                   name="name"
+                  id="name"
                 />
               </div>
               <div className="signup__wrapper__left__container--formcontent">
@@ -39,6 +40,7 @@ function SignUp() {
                   className="input"
                   placeholder=""
                   name="email"
+                  id="email"
                 />
               </div>
               <div className="signup__wrapper__left__container--formcontent">
@@ -50,6 +52,7 @@ function SignUp() {
                   className="input"
                   placeholder=""
                   name="password"
+                  id="password"
                 />
               </div>
               <div className="signup__wrapper__left__container--forget">

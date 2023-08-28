@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 
 function TopBar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -34,7 +36,9 @@ function TopBar() {
           <NavLink to="/signin">Log In</NavLink>
         </li>
         <li>
-          <NavLink to="/signup" className="button">Sign Up</NavLink>
+          <NavLink to="/signup" className="button">
+            Sign Up
+          </NavLink>
         </li>
       </ul>
     </nav>

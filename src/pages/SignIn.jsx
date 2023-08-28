@@ -1,6 +1,22 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import signInApiCall from "../services/signInApiCall";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { ThreeCircles } from "react-loader-spinner";
+import { BiErrorCircle } from "react-icons/bi";
 
 function SignIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { token, pending, error } = useSelector((state) => state.sigin);
+  const dispatch = useDispatch();
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    signInApiCall({ email, password }, dispatch);
+  };
+
   return (
     <div className="signin">
       <div className="signin__wrapper">
@@ -25,6 +41,9 @@ function SignIn() {
                   className="input"
                   placeholder=""
                   name="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="signin__wrapper__left__container--formcontent">
@@ -36,15 +55,26 @@ function SignIn() {
                   className="input"
                   placeholder=""
                   name="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="signin__wrapper__left__container--forget">
                 <a href="#password">Forget your password?</a>
               </div>
-              <button className="signin__wrapper__left__container--button">
+              <button
+                className="signin__wrapper__left__container--button"
+                onClick={handleSignIn}
+              >
                 Next
               </button>
             </form>
+            <div className="signin__wrapper__left__container--signup">
+              <p>
+                Don't Have an account? <Link to="/signup">Sign Up</Link>
+              </p>
+            </div>
             <div className="signin__wrapper__left__container--or">Or</div>
             <div className="signin__wrapper__left__container--social">
               <a href="#slack">
@@ -63,6 +93,30 @@ function SignIn() {
                 <img className="icon" src="assets/linkedin.png" alt="error" />
               </a>
             </div>
+
+            {pending && (
+              <div className="signin__wrapper__left__container--loader">
+                <ThreeCircles
+                  height="50"
+                  width="50"
+                  color="#4fa94d"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                  ariaLabel="three-circles-rotating"
+                  outerCircleColor=""
+                  innerCircleColor="#2A3342"
+                  middleCircleColor=""
+                />
+              </div>
+            )}
+
+            {error && (
+              <div className="signin__wrapper__left__container--error">
+                <BiErrorCircle className="icon" />
+                <p>Error: Invalid username or password</p>
+              </div>
+            )}
           </div>
         </div>
         <div className="signin__wrapper__right">
