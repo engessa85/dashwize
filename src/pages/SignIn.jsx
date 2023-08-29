@@ -9,6 +9,7 @@ import SignInUpLoader from "../components/SignInUpLoader";
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [inputValid, setInputValid] = useState(false);
   const { pending, error } = useSelector((state) => state.sigin);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,7 +23,12 @@ function SignIn() {
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    signInApiCall({ email, password }, dispatch);
+    if (email.length === 0 || password.length === 0) {
+      setInputValid(true);
+    } else {
+      setInputValid(false);
+      signInApiCall({ email, password }, dispatch);
+    }
   };
 
   return (
@@ -53,6 +59,11 @@ function SignIn() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
+                {inputValid && email.length <= 0 ? (
+                  <label htmlFor="email" className="warning">
+                    Email can't be empty
+                  </label>
+                ) : null}
               </div>
               <div className="signin__wrapper__left__container--formcontent">
                 <label htmlFor="password" className="label">
@@ -67,6 +78,11 @@ function SignIn() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                {inputValid && password.length <=0 ? (
+                  <label htmlFor="email" className="warning">
+                    Password can't be empty
+                  </label>
+                ) : null}
               </div>
               <div className="signin__wrapper__left__container--forget">
                 <a href="#password">Forget your password?</a>
@@ -102,9 +118,7 @@ function SignIn() {
               </a>
             </div>
 
-            {pending && (
-              <SignInUpLoader middleCircleColor = "#2A3342"/>
-            )}
+            {pending && <SignInUpLoader middleCircleColor="#2A3342" />}
 
             {error && (
               <div className="signin__wrapper__left__container--error">

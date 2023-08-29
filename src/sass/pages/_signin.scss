@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   background-color: aqua;
-  overflow: hidden;
+  // overflow: hidden;
 
   &__wrapper {
     display: flex;
@@ -61,7 +61,7 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          height: 40%;
+          // height: 40%;
           width: 100%;
           gap: 1rem;
           margin-bottom: 1rem;
@@ -75,6 +75,13 @@
             font-size: 1.5rem;
             color: v.$text-secondary-color;
             opacity: 0.9;
+          }
+
+          .warning {
+            color: red;
+            opacity: 0.5;
+            font-size: 12px;
+            font-weight: 700;
           }
 
           .input {
@@ -125,7 +132,6 @@
           font-size: 12px;
           font-weight: 500;
           @media screen and (max-width: 768px) {
-          
           }
           p {
             color: v.$text-secondary-color;
@@ -174,7 +180,7 @@
           @media screen and (max-width: 768px) {
             font-size: 10px;
             font-weight: 500;
-            padding-inline:20px;
+            padding-inline: 20px;
           }
           svg {
             width: 25px;
