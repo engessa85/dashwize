@@ -4,7 +4,7 @@ const signUpApiCall = async (
   { name, email, password, password2 },
   dispatch
 ) => {
-  const url = "http://engessa1985.pythonanywhere.com/api/accounts/signup";
+  const url = "https://engessa1985.pythonanywhere.com/api/accounts/signup";
   const config = {
     headers: {
       "Content-Type": "application/json",
