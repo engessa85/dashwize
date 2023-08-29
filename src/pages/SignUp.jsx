@@ -1,7 +1,35 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import signUpApiCall from "../services/signUpApiCall";
+import { useDispatch } from "react-redux";
+import SignInUpLoader from "../components/SignInUpLoader";
+import { BiErrorCircle } from "react-icons/bi";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 function SignUp() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+  const { message, pending, error, authorized } = useSelector(
+    (state) => state.sigup
+  );
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  console.log(authorized);
+
+  useEffect(() => {
+    if (authorized) {
+      navigate("/signin");
+    }
+  }, [navigate, authorized]);
+
+  const handelSignup = (e) => {
+    e.preventDefault();
+    signUpApiCall({ name, email, password, password2 }, dispatch);
+  };
   return (
     <div className="signup">
       <div className="signup__wrapper">
@@ -29,6 +57,9 @@ function SignUp() {
                   placeholder=""
                   name="name"
                   id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
                 />
               </div>
               <div className="signup__wrapper__left__container--formcontent">
@@ -41,6 +72,9 @@ function SignUp() {
                   placeholder=""
                   name="email"
                   id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
               <div className="signup__wrapper__left__container--formcontent">
@@ -53,6 +87,24 @@ function SignUp() {
                   placeholder=""
                   name="password"
                   id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="signup__wrapper__left__container--formcontent">
+                <label htmlFor="confirmpassword" className="label">
+                  Confirm Password*
+                </label>
+                <input
+                  type="password"
+                  className="input"
+                  placeholder=""
+                  name="confirmpassword"
+                  id="confirmpassword"
+                  value={password2}
+                  onChange={(e) => setPassword2(e.target.value)}
+                  required
                 />
               </div>
               <div className="signup__wrapper__left__container--forget">
@@ -67,7 +119,10 @@ function SignUp() {
                 </div>
                 <a href="#password">Forget your password?</a>
               </div>
-              <button className="signup__wrapper__left__container--button">
+              <button
+                className="signup__wrapper__left__container--button"
+                onClick={handelSignup}
+              >
                 Sign Up
               </button>
               <button className="signup__wrapper__left__container--google">
@@ -79,6 +134,13 @@ function SignUp() {
                   Already Have an account? <Link to="/signin">Sig in</Link>
                 </p>
               </div>
+              {pending && <SignInUpLoader middleCircleColor={"#FFFFFF"} />}
+              {error && (
+                <div className="signup__wrapper__left__container--error">
+                  <BiErrorCircle className="icon" />
+                  <p>{`Error: ${message}`}</p>
+                </div>
+              )}
             </form>
           </div>
         </div>

@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import signInApiCall from "../services/signInApiCall";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { ThreeCircles } from "react-loader-spinner";
 import { BiErrorCircle } from "react-icons/bi";
+import SignInUpLoader from "../components/SignInUpLoader";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -103,20 +103,7 @@ function SignIn() {
             </div>
 
             {pending && (
-              <div className="signin__wrapper__left__container--loader">
-                <ThreeCircles
-                  height="50"
-                  width="50"
-                  color="#4fa94d"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-                  visible={true}
-                  ariaLabel="three-circles-rotating"
-                  outerCircleColor="#22C55E"
-                  innerCircleColor="#2A3342"
-                  middleCircleColor="#22C55E"
-                />
-              </div>
+              <SignInUpLoader middleCircleColor = "#2A3342"/>
             )}
 
             {error && (

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TopBar from "../components/TopBar";
-import { Container, Col, Row, Button } from "react-bootstrap";
-import { HashLink } from "react-router-hash-link";
+import { Container, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
