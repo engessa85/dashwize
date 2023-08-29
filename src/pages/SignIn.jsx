@@ -79,7 +79,7 @@ function SignIn() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 {inputValid && password.length <=0 ? (
-                  <label htmlFor="email" className="warning">
+                  <label htmlFor="password" className="warning">
                     Password can't be empty
                   </label>
                 ) : null}

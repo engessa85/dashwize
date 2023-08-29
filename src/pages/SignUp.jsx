@@ -12,6 +12,7 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  const [inputValid, setInputValid] = useState(false);
   const { message, pending, error, authorized } = useSelector(
     (state) => state.sigup
   );
@@ -28,7 +29,13 @@ function SignUp() {
 
   const handelSignup = (e) => {
     e.preventDefault();
-    signUpApiCall({ name, email, password, password2 }, dispatch);
+    if(name.length === 0 || email.length === 0 || password.length === 0 || password2.length === 0){
+      setInputValid(true)
+    }else{
+      setInputValid(false)
+      signUpApiCall({ name, email, password, password2 }, dispatch);
+    }
+    
   };
   return (
     <div className="signup">
@@ -61,6 +68,11 @@ function SignUp() {
                   onChange={(e) => setName(e.target.value)}
                   required
                 />
+                {inputValid && name.length <=0 ? (
+                  <label htmlFor="name" className="warning">
+                    Name can't be empty
+                  </label>
+                ) : null}
               </div>
               <div className="signup__wrapper__left__container--formcontent">
                 <label htmlFor="email" className="label">
@@ -76,6 +88,11 @@ function SignUp() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
+                {inputValid && email.length <= 0 ? (
+                  <label htmlFor="email" className="warning">
+                    Email can't be empty
+                  </label>
+                ) : null}
               </div>
               <div className="signup__wrapper__left__container--formcontent">
                 <label htmlFor="password" className="label">
@@ -91,6 +108,11 @@ function SignUp() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
+                {inputValid && password.length <= 0 ? (
+                  <label htmlFor="password" className="warning">
+                    Password can't be empty
+                  </label>
+                ) : null}
               </div>
               <div className="signup__wrapper__left__container--formcontent">
                 <label htmlFor="confirmpassword" className="label">
@@ -106,6 +128,11 @@ function SignUp() {
                   onChange={(e) => setPassword2(e.target.value)}
                   required
                 />
+                {inputValid && password2.length <= 0 ? (
+                  <label htmlFor="password" className="warning">
+                    Password can't be empty
+                  </label>
+                ) : null}
               </div>
               <div className="signup__wrapper__left__container--forget">
                 <div className="remember">
