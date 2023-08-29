@@ -4,6 +4,9 @@
 .first-section {
   background-color: v.$backgroun-secondary-color;
   padding: 100px 0;
+  @include m.breakpointsDown(medium) {
+    padding: 20px 0;
+  }
 
   &__left {
     padding: 2rem;

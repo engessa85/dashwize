@@ -41,7 +41,7 @@ function Home() {
                     Sign Up
                   </Link>
                 ) : (
-                  <Link className="signupbutton" to="/signup">
+                  <Link className="signupbutton" to="/userhome">
                     Home
                   </Link>
                 )}
