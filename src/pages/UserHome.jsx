@@ -2,6 +2,9 @@ import React from "react";
 import TopBar from "../components/TopBar";
 import { BsSearch } from "react-icons/bs";
 import UserSelection from "../components/UserSelection";
+import Footer from "../components/Footer";
+import NumbersSection from "../components/NumbersSection";
+import { Link } from "react-router-dom";
 
 function UserHome() {
   return (
@@ -237,7 +240,8 @@ function UserHome() {
             </section>
             <div className="title">Finance</div>
             <div className="subtitle">
-            Keep a tab on your expenses and manage your back office operations smoothly.
+              Keep a tab on your expenses and manage your back office operations
+              smoothly.
             </div>
             <section className="all">
               <UserSelection
@@ -283,9 +287,55 @@ function UserHome() {
                 linktext={"Learn More"}
               />
             </section>
+            <div className="app1">
+              <div className="feature">
+                <p>Application</p>
+              </div>
+              <h1 className="title">Great work start with your app</h1>
+              <img className="image" src="assets/macbook.png" alt="error" />
+              <div className="lead">
+                <p>
+                  Our philosophy is simple — hire a team of diverse, passionate
+                  people and <br /> foster a culture that empowers you to do you
+                  best work.
+                </p>
+              </div>
+              <div className="buttonscontainer">
+                <div className="learn">
+                  <Link>Learn More</Link>
+                </div>
+                <div className="about">
+                  <Link>About Us</Link>
+                </div>
+              </div>
+            </div>
+
+            <div className="app2">
+              <div className="app2__left">
+                <div className="feature">
+                  <p>Application</p>
+                </div>
+                <h1 className="title">Great our free Mobile App</h1>
+                <div className="lead">
+                  <p>
+                    With our integrated CRM, project management, collaboration
+                    and invoicing capabilities, you can manage every aspect of
+                    your business in one secure platform.
+                  </p>
+                </div>
+              </div>
+              <div className="app2__right">
+                <div className="image">
+                  <img className="img1" src="assets/m1.png" alt="error" />
+                  <img className="img2" src="assets/m2.png" alt="error" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+      <NumbersSection />
+      <Footer />
     </>
   );
 }

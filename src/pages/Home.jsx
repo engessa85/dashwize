@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import PersonIcon from "../components/PersonIcon";
 import ContactIcon from "../components/ContactIcon";
-
+import Footer from "../components/Footer";
+import NumbersSection from "../components/NumbersSection";
 
 function Home() {
   const [userAuthorized, setUserAuthorized] = useState(true);
@@ -431,91 +432,8 @@ function Home() {
           </Row>
         </Container>
       </section>
-
-      <section className="eight-section">
-        <Container>
-          <Row className="eight-section__rowone">
-            <Col md={12} sm={12}>
-              <div className="features">NUMBERS</div>
-              <h1 className="title">We believe in the power of data</h1>
-              <p className="para">
-                Flex is the only business platform that lets you run your
-                business on one platform,
-                <br /> seamlessly across all digital channels.
-              </p>
-            </Col>
-          </Row>
-          <Row className="eight-section__rowtwo">
-            <Col className="col" md={3} sm={12}>
-              <div className="title">
-                <p>235.000</p>
-              </div>
-              <div className="lead">
-                <p>Projects completed</p>
-              </div>
-            </Col>
-            <Col className="col" md={3} sm={12}>
-              <div className="title">
-                <p>$10m</p>
-              </div>
-              <div className="lead">
-                <p>APR</p>
-              </div>
-            </Col>
-            <Col className="col" md={3} sm={12}>
-              <div className="title">
-                <p>+50.000</p>
-              </div>
-              <div className="lead">
-                <p>Hours Saved Annually</p>
-              </div>
-            </Col>
-            <Col className="col" md={3} sm={12}>
-              <div className="title">
-                <p>3.500</p>
-              </div>
-              <div className="lead">
-                <p>Unique Users</p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-
-      <section className="footer">
-        <Container>
-          <Row className="footer__rowone">
-            <img src="assets/logo_footer.png" alt="" />
-          </Row>
-          <Row className="footer__rowtwo">
-            <div className="col">
-              <Link>Product</Link>
-            </div>
-            <div className="col">
-              <Link>Features</Link>
-            </div>
-            <div className="col">
-              <Link>Pricing</Link>
-            </div>
-            <div className="col">
-              <Link>Resources</Link>
-            </div>
-            <div className="col">
-              <Link>Careers</Link>
-            </div>
-            <div className="col">
-              <Link>Help</Link>
-            </div>
-            <div className="col">
-              <Link>Privacy</Link>
-            </div>
-          </Row>
-          <span className="footer__line"></span>
-          <Row className="footer__rowthree">
-            <p>© 2023 dashwize. All rights reserved.</p>
-          </Row>
-        </Container>
-      </section>
+      <NumbersSection />
+      <Footer />
     </div>
   );
 }
