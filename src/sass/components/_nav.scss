@@ -13,6 +13,7 @@ nav {
   color: v.$text-primary-color;
   position: static;
   width: 100%;
+  height: 80px;
   top: 0;
 }
 
@@ -75,6 +76,9 @@ nav .menu span {
 }
 
 @media (max-width: 900px) {
+  nav {
+    height: auto;
+  }
   nav .menu {
     display: flex;
     margin: 2rem;

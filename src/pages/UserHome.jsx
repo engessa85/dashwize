@@ -76,6 +76,7 @@ function UserHome() {
                 title={"CRM"}
                 lead={"Let's break the myth that CRMs are all about data entry"}
                 linktext={"Learn More"}
+                path={"/dashboard"}
               />
 
               <UserSelection

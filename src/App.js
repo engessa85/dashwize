@@ -1,9 +1,10 @@
+import "./sass/main.scss";
+import "../src/bootstrap.min.css"
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import UserHome from "./pages/UserHome";
-import "./sass/main.scss";
-import "../src/bootstrap.min.css"
+import Dashboard from "./pages/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { PuffLoader, ScaleLoader } from "react-spinners";
 import { useState, useEffect } from "react";
@@ -35,6 +36,7 @@ function App() {
             <Route exact path="/signin" element={<SignIn />} />
             <Route exact path="/signup" element={<SignUp />} />
             <Route exact path="/userhome" element={<UserHome />} />
+            <Route exact path="/dashboard" element={<Dashboard />} />
           </Routes>
         </BrowserRouter>
       )}

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function UserSelection({imageLink, title, lead, linktext}) {
+function UserSelection({imageLink, title, lead, linktext, path}) {
   return (
     <div className="part">
       <img src={imageLink} alt="arror" className="image" />
@@ -10,7 +10,7 @@ function UserSelection({imageLink, title, lead, linktext}) {
         {lead}
       </p>
       <div className="learn">
-        <Link >{linktext}</Link>
+        <Link to={path}>{linktext}</Link>
       </div>
     </div>
   );
