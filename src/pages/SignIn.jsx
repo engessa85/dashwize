@@ -5,18 +5,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { BiErrorCircle } from "react-icons/bi";
 import SignInUpLoader from "../components/SignInUpLoader";
-
+import { resetError } from "../redux/paymentSlice";
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [inputValid, setInputValid] = useState(false);
   const { pending, error } = useSelector((state) => state.sigin);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     const tokenIs = localStorage.getItem("accesstoken");
     if (tokenIs !== null) {
+      dispatch(resetError())
       navigate("/");
     }
   });

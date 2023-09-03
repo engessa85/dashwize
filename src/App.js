@@ -1,16 +1,19 @@
 import "./sass/main.scss";
-import "../src/bootstrap.min.css"
+import "../src/bootstrap.min.css";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import UserHome from "./pages/UserHome";
 import Dashboard from "./pages/Dashboard";
+import DataImport from "./pages/DataImport";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { PuffLoader, ScaleLoader } from "react-spinners";
 import { useState, useEffect } from "react";
 
+
 function App() {
   const [loader, setLoader] = useState(false);
+  
   useEffect(() => {
     setLoader(true);
     setTimeout(() => {
@@ -37,6 +40,7 @@ function App() {
             <Route exact path="/signup" element={<SignUp />} />
             <Route exact path="/userhome" element={<UserHome />} />
             <Route exact path="/dashboard" element={<Dashboard />} />
+            <Route exact path="/dataimport" element={<DataImport />} />
           </Routes>
         </BrowserRouter>
       )}

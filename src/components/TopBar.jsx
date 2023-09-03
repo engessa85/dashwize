@@ -7,6 +7,7 @@ function TopBar() {
   const [userAuthorized, setUserAuthorized] = useState(true);
   const email = useSelector((state) => state.sigin.email);
   const navigate = useNavigate()
+  
   useEffect(() => {
     const tokenIs = localStorage.getItem("accesstoken");
     if (tokenIs !== null) {
@@ -49,32 +50,32 @@ function TopBar() {
           </li>
         </div>
 
-        {userAuthorized && (
+        {userAuthorized ? (
           <li>
             <NavLink to="/signin">Log In</NavLink>
           </li>
-        )}
-        {userAuthorized && (
+        ):null}
+        { userAuthorized ? (
           <li>
             <NavLink to="/signup" className="button">
               Sign Up
             </NavLink>
           </li>
-        )}
-        {userAuthorized === false && (
+        ):null}
+        { userAuthorized === false? (
           <li>
             <NavLink to="/signup" className="">
             {email}
             </NavLink>
           </li>
-        )}
-        {userAuthorized === false && (
+        ):null}
+        {userAuthorized === false? (
           <li>
             <a href="" className="button" onClick={handleLogout}>
               Log Out
             </a>
           </li>
-        )}
+        ):null}
       </ul>
     </nav>
   );

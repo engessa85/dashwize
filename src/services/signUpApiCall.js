@@ -5,6 +5,7 @@ const signUpApiCall = async (
   dispatch
 ) => {
   const url = "https://engessa1985.pythonanywhere.com/api/accounts/signup";
+  // const url = "http://127.0.0.1:8000/api/accounts/signup";
   const config = {
     headers: {
       "Content-Type": "application/json",

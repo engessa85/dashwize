@@ -11,12 +11,14 @@ import NumbersSection from "../components/NumbersSection";
 
 function Home() {
   const [userAuthorized, setUserAuthorized] = useState(true);
+
   useEffect(() => {
     const tokenIs = localStorage.getItem("accesstoken");
     if (tokenIs !== null) {
       setUserAuthorized(false);
     }
   }, []);
+
   return (
     <div>
       <TopBar />

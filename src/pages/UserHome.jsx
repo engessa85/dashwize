@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TopBar from "../components/TopBar";
-import { BsSearch } from "react-icons/bs";
 import UserSelection from "../components/UserSelection";
 import Footer from "../components/Footer";
 import NumbersSection from "../components/NumbersSection";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import paymentApiCall from "../services/paymentApiCall";
+import Search from "../components/Search";
 
 function UserHome() {
+  const payment = useSelector((state) => state.payment);
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    paymentApiCall(dispatch);
+    if (payment.error === true) {
+      localStorage.removeItem("accesstoken");
+      localStorage.removeItem("refreshtoken");
+      localStorage.removeItem("email");
+      navigate("/");
+    }
+  }, [payment, navigate, dispatch]);
+
   return (
     <>
       <TopBar />
@@ -19,10 +35,7 @@ function UserHome() {
       <section className="userhome-section-2">
         <div className="userhome-section-2__sidebar">
           <div className="container">
-            <div className="search">
-              <BsSearch className="icon" />
-              <input type="text" placeholder="Search" />
-            </div>
+            <Search />
             <div className="title">
               <p>CATEGORIES</p>
             </div>
@@ -76,7 +89,6 @@ function UserHome() {
                 title={"CRM"}
                 lead={"Let's break the myth that CRMs are all about data entry"}
                 linktext={"Learn More"}
-                path={"/dashboard"}
               />
 
               <UserSelection
@@ -153,6 +165,9 @@ function UserHome() {
                 title={"Survey"}
                 lead={"Let's break the myth that CRMs are all about data entry"}
                 linktext={"Learn More"}
+                path={"/dashboard"}
+                dataimport={"/dataimport"}
+                payed={payment.payed_ceo}
               />
 
               <UserSelection
@@ -160,6 +175,9 @@ function UserHome() {
                 title={"Social"}
                 lead={"Let's break the myth that CRMs are all about data entry"}
                 linktext={"Learn More"}
+                path={"/dashboard"}
+                dataimport={"/dataimport"}
+                payed={payment.payed_ceo}
               />
 
               <UserSelection
@@ -167,6 +185,9 @@ function UserHome() {
                 title={"Route IQ"}
                 lead={"Let's break the myth that CRMs are all about data entry"}
                 linktext={"Learn More"}
+                path={"/dashboard"}
+                dataimport={"/dataimport"}
+                payed={payment.payed_ceo}
               />
             </section>
             <section className="all">
@@ -175,6 +196,9 @@ function UserHome() {
                 title={"Companies"}
                 lead={"Let's break the myth that CRMs are all about data entry"}
                 linktext={"Learn More"}
+                path={"/dashboard"}
+                dataimport={"/dataimport"}
+                payed={payment.payed_ceo}
               />
 
               <UserSelection
@@ -182,6 +206,9 @@ function UserHome() {
                 title={"Mail"}
                 lead={"Let's break the myth that CRMs are all about data entry"}
                 linktext={"Learn More"}
+                path={"/dashboard"}
+                dataimport={"/dataimport"}
+                payed={payment.payed_ceo}
               />
 
               <UserSelection
@@ -189,6 +216,9 @@ function UserHome() {
                 title={"Form"}
                 lead={"Let's break the myth that CRMs are all about data entry"}
                 linktext={"Learn More"}
+                path={"/dashboard"}
+                dataimport={"/dataimport"}
+                payed={payment.payed_ceo}
               />
             </section>
             <div className="title">CTO</div>

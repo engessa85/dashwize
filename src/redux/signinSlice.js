@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const signinSlice = createSlice({
   name: "signin",
   initialState: {
-    email:"",
+    email:localStorage.getItem("email"),
     pending: false,
     error: false,
   },
