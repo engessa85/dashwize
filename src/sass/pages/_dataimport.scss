@@ -63,7 +63,10 @@
           font-weight: 500;
           font-size: 24px;
           @include m.breakpointsDown(medium) {
-            text-align: center;
+            margin-top: 30px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
             font-size: 20px;
           }
           li {
@@ -86,12 +89,18 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        
+
         .all {
           display: flex;
           flex-direction: column;
           gap: 20px;
-          
+          @include m.breakpointsDown(medium) {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
           h1 {
             font-weight: 500;
             font-size: 32px;
@@ -107,6 +116,7 @@
             @include m.breakpointsDown(medium) {
               flex-direction: column;
               gap: 20px;
+              
             }
 
             .linkcontainer {
@@ -115,7 +125,7 @@
               @include m.breakpointsDown(medium) {
                 margin: 0;
               }
-              
+
               a {
                 text-decoration: none;
                 .carditem {
@@ -129,6 +139,10 @@
                   align-items: center;
                   flex-direction: column;
                   gap: 15px;
+                  @include m.breakpointsDown(medium) {
+                    width: 80vw;
+                    
+                  }
                   img {
                     width: 80px;
                     height: 80px;
