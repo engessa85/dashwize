@@ -21,7 +21,7 @@ function UserHome() {
       localStorage.removeItem("email");
       navigate("/");
     }
-  }, [payment, navigate, dispatch]);
+  }, []);
 
   return (
     <>

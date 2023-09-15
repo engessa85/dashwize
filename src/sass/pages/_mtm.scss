@@ -1,0 +1,158 @@
+.mtmmaincontainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  &__wrapperleft {
+    flex: 2;
+    background-color: #2a3342;
+    opacity: 0.8;
+    color: white;
+    
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 0;
+      height: 100%;
+      margin: 0;
+      padding: 20px 0;
+      position: relative;
+
+      .exporting {
+        position: absolute;
+        right: -130px;
+        top: 75px;
+        background-color: #2a3342;
+        width: 120px;
+        border-radius: 8px;
+       
+        &.active {
+          opacity: 1;
+          visibility: visible;
+          transition: all 0.3s ease-in-out;
+          transform: translateX(0);
+        }
+        &.inactive {
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease-in-out;
+          transform: translateX(-20px);
+        }
+      }
+
+      
+
+      li {
+        list-style: none;
+        padding: 1rem 2rem;
+        display: flex;
+        .inner {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          gap: 5px;
+        
+          .arrow {
+            font-size: 10px;
+
+            &.inactive {
+              transform: rotate(0deg);
+            }
+
+            &.activate {
+              transform: rotate(90deg);
+            }
+          }
+        }
+
+        &:hover {
+          background-color: gray;
+          transition: 0.3s all ease-in-out;
+        }
+
+      }
+
+      .history-menue {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
+        max-height: 400px;
+        overflow-y: scroll;
+        font-size: 14px;
+
+        .history-item {
+          width: 80%;
+          text-align: center;
+          padding: 0 5px;
+
+          &:hover {
+            opacity: 0.8;
+            transition: all 0.3s ease-in-out;
+            background-color: gray;
+            cursor: pointer;
+          }
+          &:active {
+            color: red;
+          }
+
+        }
+
+        &.activate {
+          opacity: 1;
+          visibility: visible;
+          transition: all 0.2s ease-in-out;
+          transform: translateY(0);
+        }
+
+        &.inactive {
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.2s ease-in-out;
+          transform: translateY(-20px);
+        }
+      }
+    }
+  }
+
+  &__wrappermain {
+    flex: 8;
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .chartcontainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      color: rgba(42, 51, 66, 1);
+      font-size: 25px;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+    p {
+      color: gray;
+      opacity: 0.9;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+
+    .recharts-default-legend {
+      li {
+        font-size: 16px;
+      }
+    }
+  }
+}

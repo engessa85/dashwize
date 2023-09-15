@@ -9,6 +9,8 @@ import DataImport from "./pages/DataImport";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { PuffLoader, ScaleLoader } from "react-spinners";
 import { useState, useEffect } from "react";
+import FillForm from "./pages/FillForm";
+import MtoMDahsboard from "./pages/MtoMDahsboard";
 
 
 function App() {
@@ -41,6 +43,8 @@ function App() {
             <Route exact path="/userhome" element={<UserHome />} />
             <Route exact path="/dashboard" element={<Dashboard />} />
             <Route exact path="/dataimport" element={<DataImport />} />
+            <Route exact path="/fillform" element={<FillForm />} />
+            <Route exact path="/mtm" element={<MtoMDahsboard />} />
           </Routes>
         </BrowserRouter>
       )}

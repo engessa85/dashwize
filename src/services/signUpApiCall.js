@@ -4,8 +4,8 @@ const signUpApiCall = async (
   { name, email, password, password2 },
   dispatch
 ) => {
-  const url = "https://engessa1985.pythonanywhere.com/api/accounts/signup";
-  // const url = "http://127.0.0.1:8000/api/accounts/signup";
+  // const url = "https://engessa1985.pythonanywhere.com/api/accounts/signup";
+  const url = "http://127.0.0.1:8000/api/accounts/signup";
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -17,7 +17,6 @@ const signUpApiCall = async (
   try {
     dispatch(startUpdate());
     const response = await axios.post(url, body, config);
-    console.log("main", response.data);
 
     if ("error" in response.data) {
       dispatch(startError(response.data.error))
@@ -27,7 +26,6 @@ const signUpApiCall = async (
 
     
   } catch (error) {
-    console.log(error);
     dispatch(startError());
   }
 };

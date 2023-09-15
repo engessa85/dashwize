@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { BiErrorCircle } from "react-icons/bi";
 import SignInUpLoader from "../components/SignInUpLoader";
 import { resetError } from "../redux/paymentSlice";
+import { restmtmError } from "../redux/getmtmtSlice";
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,6 +20,7 @@ function SignIn() {
     const tokenIs = localStorage.getItem("accesstoken");
     if (tokenIs !== null) {
       dispatch(resetError())
+      dispatch(restmtmError())
       navigate("/");
     }
   });

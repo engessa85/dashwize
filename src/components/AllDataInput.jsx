@@ -7,7 +7,7 @@ function AllDataInput() {
       <h1>All</h1>
       <>
         <div className="cardcontainer">
-          <DataInputCard imagepath={"assets/sform.png"} lead={"Fill Forms"} />
+          <DataInputCard imagepath={"assets/sform.png"} lead={"Fill Forms"} path={"/fillform"} />
           <DataInputCard
             imagepath={"assets/slocaldriver.png"}
             lead={"Local drive"}
