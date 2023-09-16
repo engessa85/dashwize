@@ -13,6 +13,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import PieChartProfitLoss from "../components/PieChartProfitLoss";
+
 import { RiDashboardFill } from "react-icons/ri";
 import { BsFilePdfFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
@@ -23,14 +25,26 @@ import { FaFileExport } from "react-icons/fa6";
 import { BiSolidRightArrow } from "react-icons/bi";
 import { RiChatHistoryFill } from "react-icons/ri";
 import getMtMApiCall from "../services/getMtMApiCall";
+import getProfitLossApiCall from "../services/getProfitLossApicCall";
 import { useDispatch, useSelector } from "react-redux";
 import SignInUpLoader from "../components/SignInUpLoader";
-
 import { exportComponentAsPNG } from "react-component-export-image";
+import {
+  GROSS_PROFIT,
+  OPEX,
+  OPERATING_PROFIT,
+  NET_PROFIT,
+  GROSS_PROFIT_MARGIN,
+  OPEX_RATION,
+  OPERATING_PROFIT_MARGIN,
+  NET_PROFIT_MARGIN,
+} from "../calculation/ProfitLossCalculation";
 
 function MtoMDahsboard() {
   const mtmactual = useSelector((state) => state.mtm.mtmdataActual);
   const mtmtarget = useSelector((state) => state.mtm.mtmdataTarget);
+  const profitloss = useSelector((state) => state.profitloss.profitLossArray);
+
   const {
     getTotalActualvalue,
     getTotalTargetValue,
@@ -39,6 +53,14 @@ function MtoMDahsboard() {
     pending,
     error,
   } = useSelector((state) => state.getmtm);
+  const {
+    getProfitLosslvalue,
+    getProfitTotalDays,
+    getProfitTotalTimes,
+    profitPending,
+    profitError,
+  } = useSelector((state) => state.getprofitloss);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [openHistory, setOpenHistory] = useState(false);
@@ -46,18 +68,36 @@ function MtoMDahsboard() {
   const [index, setIndex] = useState(0);
   const chartref = useRef(null);
 
+  let data;
+  let revenue;
+  let cost_of_good_sold;
+  let sales;
+  let marketing;
+  let general_and_admin;
+  let other_income;
+  let other_expenses;
+  let interest_and_tax;
+
+  let GROSS_PROFIT_VALUE;
+  let OPEX_VALUE;
+  let OPERATING_PROFIT_VALUE;
+  let NET_PROFIT_VALUE;
+  let GROSS_PROFIT_MARGIN_VALUE;
+  let OPEX_RATION_VALUE;
+  let OPERATING_PROFIT_MARGIN_VALUE;
+  let NET_PROFIT_MARGIN_VALUE;
+
   useEffect(() => {
     getMtMApiCall(dispatch);
+    getProfitLossApiCall(dispatch);
 
-    if (error === true) {
+    if (error === true || profitError === true) {
       localStorage.removeItem("accesstoken");
       localStorage.removeItem("refreshtoken");
       localStorage.removeItem("email");
       navigate("/");
     }
   }, []);
-
-  let data;
 
   if (index === 0) {
     data = [
@@ -122,6 +162,15 @@ function MtoMDahsboard() {
         EBIT_TARGET: mtmtarget[11],
       },
     ];
+
+    revenue = profitloss[0];
+    cost_of_good_sold = profitloss[1];
+    sales = profitloss[2];
+    marketing = profitloss[3];
+    general_and_admin = profitloss[4];
+    other_income = profitloss[5];
+    other_expenses = profitloss[6];
+    interest_and_tax = profitloss[7];
   } else {
     data = [
       {
@@ -185,7 +234,29 @@ function MtoMDahsboard() {
         EBIT_TARGET: getTotalTargetValue[index][11],
       },
     ];
+
+    revenue = getProfitLosslvalue[index][0];
+    cost_of_good_sold = getProfitLosslvalue[index][1];
+    sales = getProfitLosslvalue[index][2];
+    marketing = getProfitLosslvalue[index][3];
+    general_and_admin = getProfitLosslvalue[index][4];
+    other_income = getProfitLosslvalue[index][5];
+    other_expenses = getProfitLosslvalue[index][6];
+    interest_and_tax = getProfitLosslvalue[index][7];
   }
+
+  GROSS_PROFIT_VALUE = GROSS_PROFIT(revenue, cost_of_good_sold)
+  OPEX_VALUE = OPEX(sales,marketing,general_and_admin,other_income,other_expenses)
+  OPERATING_PROFIT_VALUE = OPERATING_PROFIT(GROSS_PROFIT_VALUE, OPEX_VALUE)
+  NET_PROFIT_VALUE = NET_PROFIT(OPERATING_PROFIT_VALUE,interest_and_tax)
+
+  GROSS_PROFIT_MARGIN_VALUE = GROSS_PROFIT_MARGIN(GROSS_PROFIT_VALUE,revenue)
+  OPEX_RATION_VALUE = OPEX_RATION(OPEX_VALUE, revenue)
+  OPERATING_PROFIT_MARGIN_VALUE = OPERATING_PROFIT_MARGIN(OPERATING_PROFIT_VALUE, revenue)
+  NET_PROFIT_MARGIN_VALUE = NET_PROFIT_MARGIN(NET_PROFIT_VALUE, revenue)
+
+  console.log(GROSS_PROFIT_MARGIN_VALUE);
+  
 
   return (
     <>
@@ -215,7 +286,9 @@ function MtoMDahsboard() {
               <li>
                 <div
                   className="inner"
-                  onClick={() => exportComponentAsPNG(chartref, "custom-chart-filename")}
+                  onClick={() =>
+                    exportComponentAsPNG(chartref, "custom-chart-filename")
+                  }
                 >
                   <BiSolidFilePng /> <span>PNG</span>
                 </div>
@@ -263,51 +336,34 @@ function MtoMDahsboard() {
             </div>
           </ul>
         </div>
+
         <div className="mtmmaincontainer__wrappermain">
-          <h1>Earning before interest and Taxes</h1>
-          <p>
-            Mont to Month | YTD - Created in {getTotalDays[index]} at{" "}
-            {getTotalTimes[index]}
-          </p>
-          {pending ? (
-            <SignInUpLoader middleCircleColor={"#2A3342"} />
-          ) : (
-            <ResponsiveContainer width="100%" height="100%">
-              <div className="chartcontainer" ref={chartref} >
-                <LineChart
-                  width={800}
-                  height={500}
-                  data={data}
-                  margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                  }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Line
-                    type="monotone"
-                    dataKey="EBIT_ACTUAL"
-                    stroke="#8884d8"
-                    activeDot={{ r: 8 }}
-                    strokeWidth={4}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="EBIT_TARGET"
-                    stroke="#82ca9d"
-                    activeDot={{ r: 8 }}
-                    strokeWidth={4}
-                  />
-                </LineChart>
-              </div>
-            </ResponsiveContainer>
-          )}
+          <div className="top">
+            <div className="top-wrapper">
+              <PieChartProfitLoss percentage = {GROSS_PROFIT_MARGIN_VALUE} />
+              <div className="precentage">{`${GROSS_PROFIT_MARGIN_VALUE}%`}</div>
+              <div className="precentage-text">GROSS PROFIT MARGIN</div>
+            </div>
+            <div className="top-wrapper">
+              <PieChartProfitLoss percentage={OPEX_RATION_VALUE} />
+              <div className="precentage">{`${OPEX_RATION_VALUE}%`}</div>
+              <div className="precentage-text">OPEX RATION</div>
+            </div>
+            <div className="top-wrapper">
+              <PieChartProfitLoss percentage={OPERATING_PROFIT_MARGIN_VALUE}/>
+              <div className="precentage">{`${OPERATING_PROFIT_MARGIN_VALUE}%`}</div>
+              <div className="precentage-text">OPERATING PROFIT MARGIN</div>
+            </div>
+            <div className="top-wrapper">
+              <PieChartProfitLoss percentage={NET_PROFIT_MARGIN_VALUE} />
+              <div className="precentage">{`${NET_PROFIT_MARGIN_VALUE}%`}</div>
+              <div className="precentage-text">NET PROFIT MARGIN</div>
+            </div>
+          </div>
+          <div className="bottom">
+            <div className="bottom-left">bottom left</div>
+            <div className="bottom-right">bottom right</div>
+          </div>
         </div>
       </div>
       <Footer />
@@ -316,3 +372,50 @@ function MtoMDahsboard() {
 }
 
 export default MtoMDahsboard;
+
+{
+  /* <h1>Earning before interest and Taxes</h1>
+                <p>
+                  Mont to Month | YTD - Created in {getTotalDays[index]} at{" "}
+                  {getTotalTimes[index]}
+                </p>
+                {pending ? (
+                  <SignInUpLoader middleCircleColor={"#2A3342"} />
+                ) : (
+                  <ResponsiveContainer width="100%" height="100%">
+                    <div className="chartcontainer" ref={chartref}>
+                      <LineChart
+                        width={300}
+                        height={200}
+                        data={data}
+                        margin={{
+                          top: 5,
+                          right: 30,
+                          left: 20,
+                          bottom: 5,
+                        }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Line
+                          type="monotone"
+                          dataKey="EBIT_ACTUAL"
+                          stroke="#8884d8"
+                          activeDot={{ r: 8 }}
+                          strokeWidth={4}
+                        />
+                        <Line
+                          type="monotone"
+                          dataKey="EBIT_TARGET"
+                          stroke="#82ca9d"
+                          activeDot={{ r: 8 }}
+                          strokeWidth={4}
+                        />
+                      </LineChart>
+                    </div>
+                  </ResponsiveContainer>
+                )} */
+}

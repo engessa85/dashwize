@@ -7,6 +7,8 @@ import { BiErrorCircle } from "react-icons/bi";
 import SignInUpLoader from "../components/SignInUpLoader";
 import { resetError } from "../redux/paymentSlice";
 import { restmtmError } from "../redux/getmtmtSlice";
+import {restprofitlossError} from "../redux/getProfitLossSlice"
+
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +23,7 @@ function SignIn() {
     if (tokenIs !== null) {
       dispatch(resetError())
       dispatch(restmtmError())
+      dispatch(restprofitlossError())
       navigate("/");
     }
   });

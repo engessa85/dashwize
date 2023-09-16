@@ -6,7 +6,7 @@ import { addDataActual, addDataTarget, resetError } from "../redux/mtmSlice";
 import { useNavigate } from "react-router-dom";
 import postMtMApiCall from "../services/postMtMApiCall";
 
-function MtoMForm({ validate, setValidate }) {
+function MtoMForm({ validate, setValidate, setNextForm }) {
   const [emptyInput, setEmptyInput] = useState(false);
   const [wrongInput, setWrongInput] = useState(false);
   const [nextButton, setNextButton] = useState(false);
@@ -159,7 +159,8 @@ function MtoMForm({ validate, setValidate }) {
     e.preventDefault();
     if (nextButton) {
       postMtMApiCall(dispatch,mtmactual, mtmtarget);
-      navigate("/mtm")
+      // navigate("/mtm")
+      setNextForm(true)
     }
   };
   return (

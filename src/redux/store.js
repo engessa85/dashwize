@@ -5,6 +5,8 @@ import signupSlice from "./signupSlice";
 import paymentSlice from "./paymentSlice";
 import mtmSlice from "./mtmSlice";
 import getmtmtSlice from "./getmtmtSlice";
+import profitLossSlice from "./profitLossSlice";
+import getProfitLossSlice from "./getProfitLossSlice";
 const store = configureStore({
   reducer: {
     demo: demoSlice,
@@ -13,6 +15,8 @@ const store = configureStore({
     payment: paymentSlice,
     mtm: mtmSlice,
     getmtm: getmtmtSlice,
+    profitloss:profitLossSlice,
+    getprofitloss:getProfitLossSlice
   },
 });
 

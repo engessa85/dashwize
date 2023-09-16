@@ -9,7 +9,6 @@
     background-color: #2a3342;
     opacity: 0.8;
     color: white;
-    
 
     ul {
       display: flex;
@@ -29,7 +28,7 @@
         background-color: #2a3342;
         width: 120px;
         border-radius: 8px;
-       
+
         &.active {
           opacity: 1;
           visibility: visible;
@@ -44,8 +43,6 @@
         }
       }
 
-      
-
       li {
         list-style: none;
         padding: 1rem 2rem;
@@ -56,7 +53,7 @@
           align-items: center;
           justify-content: center;
           gap: 5px;
-        
+
           .arrow {
             font-size: 10px;
 
@@ -74,7 +71,6 @@
           background-color: gray;
           transition: 0.3s all ease-in-out;
         }
-
       }
 
       .history-menue {
@@ -101,7 +97,6 @@
           &:active {
             color: red;
           }
-
         }
 
         &.activate {
@@ -122,37 +117,120 @@
   }
 
   &__wrappermain {
-    flex: 8;
-    padding: 1rem;
-    width: 100%;
+    flex: 10;
+    background: rgb(229, 226, 226);
     display: flex;
     flex-direction: column;
-    align-items: center;
 
-    .chartcontainer {
+    .top {
+      flex: 2;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-direction: row;
+      
+      .top-wrapper {
+        flex: 3;
+        background-color: white;
+        padding: 1rem;
+        margin: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        border-radius: 6px;
+        position: relative;
+
+        .precentage {
+          position: absolute;
+          top: 100px;
+          font-size: 18px;
+          font-weight: 600;
+          color: "#2A3342";
+        }
+
+        .precentage-text {
+          position: absolute;
+          top: 140px;
+          font-size: 16px;
+          font-weight: 600;
+          color: "#2A3342";
+        }
+      }
     }
 
-    h1 {
-      color: rgba(42, 51, 66, 1);
-      font-size: 25px;
-      font-weight: 500;
-      margin-top: 10px;
-    }
-    p {
-      color: gray;
-      opacity: 0.9;
-      font-size: 18px;
-      font-weight: 500;
-      margin-bottom: 30px;
-    }
+    .bottom {
+      
+      flex: 5;
+      display: flex;
+      flex-direction: row;
 
-    .recharts-default-legend {
-      li {
-        font-size: 16px;
+      .bottom-left {
+        flex: 1;
+        background-color: white;
+        margin: 8px;
+        padding: 1rem;
+        border-radius: 6px;
+      }
+
+      .bottom-right {
+        flex: 1;
+        background-color: white;
+        margin: 8px;
+        padding: 1rem;
+        border-radius: 6px;
       }
     }
   }
 }
+
+// &__wrappermain {
+//   flex: 8;
+//   padding: 1rem;
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   max-width: 1750px;
+
+//   .bottom {
+//     display: flex;
+//     flex-direction: row;
+//     .bottom-left {
+//       flex: 1;
+//       background-color: green;
+
+//       &__wrapper {
+//         background-color: aqua;
+//         .chartcontainer {
+//           display: flex;
+//           align-items: center;
+//           justify-content: center;
+//         }
+
+//         h1 {
+//           color: rgba(42, 51, 66, 1);
+//           font-size: 25px;
+//           font-weight: 500;
+//           margin-top: 10px;
+//         }
+//         p {
+//           color: gray;
+//           opacity: 0.9;
+//           font-size: 18px;
+//           font-weight: 500;
+//           margin-bottom: 30px;
+//         }
+
+//         .recharts-default-legend {
+//           li {
+//             font-size: 16px;
+//           }
+//         }
+//       }
+//     }
+
+//     .bottom-right {
+//       flex: 1;
+//       background-color: red;
+//     }
+//   }
+// }
