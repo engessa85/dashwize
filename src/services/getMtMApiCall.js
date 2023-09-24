@@ -6,7 +6,7 @@ const getMtMApiCall = async (dispatch) => {
   const totaltargetValueArray = [];
   const totalCreatedDate_day = [];
   const totalCreatedDate_hour = [];
-  const url = "http://engessa1985.pythonanywhere.com/api/dataentery/mtm";
+  const url = "https://engessa1985.pythonanywhere.com/api/dataentery/mtm";
   // const url = "http://127.0.0.1:8000/api/dataentery/mtm";
   const config = {
     headers: {
