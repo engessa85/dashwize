@@ -2,8 +2,8 @@ import axios from "axios";
 import { startError } from "../redux/mtmSlice";
 
 const postMtMApiCall = async (dispatch, mtmactual,mtmtarget) => {
-  // const url = "https://engessa1985.pythonanywhere.com/api/accounts/paymentinfo";
-  const url = "http://127.0.0.1:8000/api/dataentery/mtm";
+  const url = "https://engessa1985.pythonanywhere.com/api/dataentery/mtm";
+  // const url = "http://127.0.0.1:8000/api/dataentery/mtm";
   const config = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accesstoken")}`,

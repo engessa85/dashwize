@@ -108,9 +108,43 @@
 
         &.inactive {
           opacity: 0;
-          visibility: hidden;
+          visibility:hidden;
           transition: all 0.2s ease-in-out;
           transform: translateY(-20px);
+        }
+      }
+
+
+      .export-menue {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
+        max-height: 400px;
+        font-size: 14px;
+
+        .export-item {
+          width: 80%;
+          text-align: center;
+          padding: 0 5px;
+          cursor: pointer;
+        }
+
+        &.activate {
+          opacity: 1;
+          visibility: visible;
+          transition: all 0.2s ease-in-out;
+          transform: translateY(0);
+          display: flex;
+        }
+
+        &.inactive {
+          opacity: 0;
+          visibility:hidden;
+          transition: all 0.2s ease-in-out;
+          transform: translateY(-20px);
+          display: none;
         }
       }
     }
@@ -121,12 +155,14 @@
     background: rgb(229, 226, 226);
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 100%;
 
     .top {
       flex: 2;
       display: flex;
       flex-direction: row;
-      
+
       .top-wrapper {
         flex: 3;
         background-color: white;
@@ -158,79 +194,64 @@
     }
 
     .bottom {
-      
       flex: 5;
       display: flex;
       flex-direction: row;
 
       .bottom-left {
-        flex: 1;
+        flex: 2;
         background-color: white;
         margin: 8px;
         padding: 1rem;
         border-radius: 6px;
+
+        h1 {
+          color: rgba(42, 51, 66, 1);
+          font-size: 18px;
+          font-weight: 500;
+          margin-top: 10px;
+        }
+        p {
+          color: gray;
+          opacity: 0.9;
+          font-size: 16px;
+          font-weight: 500;
+          margin-bottom: 30px;
+        }
+
+        .recharts-default-legend {
+          li {
+            font-weight: 700;
+            font-size: 13px;
+          }
+        }
       }
 
       .bottom-right {
         flex: 1;
         background-color: white;
         margin: 8px;
-        padding: 1rem;
+        padding: 2rem;
         border-radius: 6px;
+        h1 {
+          color: black;
+          font-size: 14px;
+          font-weight: 700;
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+
+        .porfit-row {
+          display: flex;
+          justify-content: space-between;
+
+          p {
+            color: gray;
+            font-size: 15px;
+            font-weight: 500;
+          }
+        }
       }
     }
   }
 }
-
-// &__wrappermain {
-//   flex: 8;
-//   padding: 1rem;
-//   width: 100%;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   max-width: 1750px;
-
-//   .bottom {
-//     display: flex;
-//     flex-direction: row;
-//     .bottom-left {
-//       flex: 1;
-//       background-color: green;
-
-//       &__wrapper {
-//         background-color: aqua;
-//         .chartcontainer {
-//           display: flex;
-//           align-items: center;
-//           justify-content: center;
-//         }
-
-//         h1 {
-//           color: rgba(42, 51, 66, 1);
-//           font-size: 25px;
-//           font-weight: 500;
-//           margin-top: 10px;
-//         }
-//         p {
-//           color: gray;
-//           opacity: 0.9;
-//           font-size: 18px;
-//           font-weight: 500;
-//           margin-bottom: 30px;
-//         }
-
-//         .recharts-default-legend {
-//           li {
-//             font-size: 16px;
-//           }
-//         }
-//       }
-//     }
-
-//     .bottom-right {
-//       flex: 1;
-//       background-color: red;
-//     }
-//   }
-// }

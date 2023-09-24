@@ -6,7 +6,8 @@ const getMtMApiCall = async (dispatch) => {
   const totaltargetValueArray = [];
   const totalCreatedDate_day = [];
   const totalCreatedDate_hour = [];
-  const url = "http://127.0.0.1:8000/api/dataentery/mtm";
+  const url = "http://engessa1985.pythonanywhere.com/api/dataentery/mtm";
+  // const url = "http://127.0.0.1:8000/api/dataentery/mtm";
   const config = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accesstoken")}`,
@@ -32,18 +33,14 @@ const getMtMApiCall = async (dispatch) => {
       totalCreatedDate_hour.push(createdDate_hour);
     });
 
-    setTimeout(
-      () =>
-        dispatch(
-          startSuccess({
-            totalactualValueArray,
-            totaltargetValueArray,
-            totalCreatedDate_day,
-            totalCreatedDate_hour,
-          })
-        ),
-      1000
-    );
+    dispatch(
+      startSuccess({
+        totalactualValueArray,
+        totaltargetValueArray,
+        totalCreatedDate_day,
+        totalCreatedDate_hour,
+      })
+    )
   } catch (error) {
     dispatch(startError());
     

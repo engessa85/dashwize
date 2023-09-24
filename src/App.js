@@ -11,6 +11,7 @@ import { PuffLoader, ScaleLoader } from "react-spinners";
 import { useState, useEffect } from "react";
 import FillForm from "./pages/FillForm";
 import MtoMDahsboard from "./pages/MtoMDahsboard";
+import SendEmail from "./pages/SendEmail";
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
             <Route exact path="/dataimport" element={<DataImport />} />
             <Route exact path="/fillform" element={<FillForm />} />
             <Route exact path="/mtm" element={<MtoMDahsboard />} />
+            <Route exact path="/email" element={<SendEmail />} />
           </Routes>
         </BrowserRouter>
       )}
