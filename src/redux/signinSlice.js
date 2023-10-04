@@ -18,15 +18,16 @@ const signinSlice = createSlice({
       localStorage.setItem("email", action.payload.email);
       localStorage.setItem("refreshtoken", action.payload.res.refresh);
       localStorage.setItem("accesstoken", action.payload.res.access);
-      
-      
     },
     startError: (state) => {
       state.pending = false;
       state.error = true;
     },
+    resetSigInError: (state) => {
+      state.error = false;
+    },
   },
 });
 
-export const { startUpdate, startSuccess, startError } = signinSlice.actions;
+export const { startUpdate, startSuccess, startError, resetSigInError } = signinSlice.actions;
 export default signinSlice.reducer;

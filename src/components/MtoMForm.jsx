@@ -157,7 +157,7 @@ function MtoMForm({ validate, setValidate, setNextForm }) {
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    if (nextButton) {
+    if (nextButton && !mtmterror) {
       postMtMApiCall(dispatch,mtmactual, mtmtarget);
       // navigate("/mtm")
       setNextForm(true)

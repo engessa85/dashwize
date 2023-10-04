@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import SignInUpLoader from "../components/SignInUpLoader";
 import { BiErrorCircle } from "react-icons/bi";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import {resetSigInError} from "../redux/signinSlice"
 
 function SignUp() {
   const [name, setName] = useState("");
@@ -19,9 +20,10 @@ function SignUp() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log(authorized);
+  
 
   useEffect(() => {
+    dispatch(resetSigInError())
     if (authorized) {
       navigate("/signin");
     }

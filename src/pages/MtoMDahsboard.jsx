@@ -43,6 +43,9 @@ import {
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 
+import { BsDatabaseFillAdd } from "react-icons/bs";
+import { motion } from "framer-motion";
+
 function MtoMDahsboard() {
   const mtmactual = useSelector((state) => state.mtm.mtmdataActual);
   const mtmtarget = useSelector((state) => state.mtm.mtmdataTarget);
@@ -54,6 +57,7 @@ function MtoMDahsboard() {
     getTotalTargetValue,
     getTotalDays,
     getTotalTimes,
+    getTotalDemos,
     pending,
     error,
   } = useSelector((state) => state.getmtm);
@@ -100,15 +104,19 @@ function MtoMDahsboard() {
       }, 2000);
     }
 
-    fetch();
-
     if (error === true || profitError === true) {
       localStorage.removeItem("accesstoken");
       localStorage.removeItem("refreshtoken");
       localStorage.removeItem("email");
       navigate("/");
+    } else {
+      fetch();
     }
-  }, []);
+  }, [error, profitError]);
+
+  const GettingData = () => {
+    navigate("/dataimport");
+  };
 
   if (loading === false) {
     data = [
@@ -203,7 +211,7 @@ function MtoMDahsboard() {
   );
   NET_PROFIT_MARGIN_VALUE = NET_PROFIT_MARGIN(NET_PROFIT_VALUE, revenue);
 
-  const downloadFileName = "Report"
+  const downloadFileName = "Report";
 
   const handelPDF = () => {
     const input = chartref.current;
@@ -211,23 +219,30 @@ function MtoMDahsboard() {
     html2canvas(input).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4", true);
-      const pdfWidth = pdf.internal.pageSize.getWidth()
-      const pdfHight = pdf.internal.pageSize.getHeight()
-      const imgWidth = canvas.width
-      const imgHeight = canvas.height
-      const ratio = Math.min(pdfWidth/imgWidth, pdfHight/imgHeight)
-      const imgX = (pdfWidth-imgWidth*ratio)/2
-      const imgY = 10
-      pdf.addImage(imgData, "JPEG", imgX, imgY, imgWidth*ratio, imgHeight*ratio);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHight = pdf.internal.pageSize.getHeight();
+      const imgWidth = canvas.width;
+      const imgHeight = canvas.height;
+      const ratio = Math.min(pdfWidth / imgWidth, pdfHight / imgHeight);
+      const imgX = (pdfWidth - imgWidth * ratio) / 2;
+      const imgY = 10;
+      pdf.addImage(
+        imgData,
+        "JPEG",
+        imgX,
+        imgY,
+        imgWidth * ratio,
+        imgHeight * ratio
+      );
       pdf.save(`${downloadFileName}.pdf`);
     });
   };
 
+  const handelEmail = () => {
+    navigate("/email");
+  };
 
-  const handelEmail = ()=> {
-    navigate("/email")
-
-  }
+  // console.log(getTotalDemos[0]);
 
   return (
     <>
@@ -235,9 +250,9 @@ function MtoMDahsboard() {
       <div className="mtmmaincontainer">
         <div className="mtmmaincontainer__wrapperleft">
           <ul>
-            <li>
+            <li onClick={GettingData}>
               <div className="inner">
-                <RiDashboardFill /> <span>Dashboard</span>
+                <BsDatabaseFillAdd /> <span>Data</span>
               </div>
             </li>
 
@@ -309,8 +324,24 @@ function MtoMDahsboard() {
             >
               {getTotalDays.map((element, index) => (
                 <span key={index} className="history-item">
-                  <div onClick={() => setIndex(index)}>
-                    {element}:{getTotalTimes[index]}
+                  <div className="eachelement" onClick={() => setIndex(index)}>
+                    {element}
+                    <span> @ </span>
+                    {getTotalTimes[index]}
+                    {getTotalDemos[index] === true && (
+                      <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={{
+                          hidden: { opacity: 0 },
+                          visible: { opacity: 1 },
+                        }}
+                        transition={{ repeat: Infinity, duration: 2 }}
+                        className="demo"
+                      >
+                        Demo
+                      </motion.div>
+                    )}
                   </div>
                 </span>
               ))}
@@ -334,16 +365,58 @@ function MtoMDahsboard() {
             <>
               <div className="top">
                 <div className="top-wrapper">
+                  {getTotalActualvalue[index][12] && (
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
+                      }}
+                      transition={{ repeat: Infinity, duration: 2 }}
+                      className="demo"
+                    >
+                      Demo
+                    </motion.div>
+                  )}
                   <PieChartProfitLoss percentage={GROSS_PROFIT_MARGIN_VALUE} />
                   <div className="precentage">{`${GROSS_PROFIT_MARGIN_VALUE}%`}</div>
                   <div className="precentage-text">GROSS PROFIT MARGIN</div>
                 </div>
                 <div className="top-wrapper">
+                  {getTotalActualvalue[index][12] && (
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
+                      }}
+                      transition={{ repeat: Infinity, duration: 2 }}
+                      className="demo"
+                    >
+                      Demo
+                    </motion.div>
+                  )}
                   <PieChartProfitLoss percentage={OPEX_RATION_VALUE} />
                   <div className="precentage">{`${OPEX_RATION_VALUE}%`}</div>
                   <div className="precentage-text">OPEX RATION</div>
                 </div>
                 <div className="top-wrapper">
+                  {getTotalActualvalue[index][12] && (
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
+                      }}
+                      transition={{ repeat: Infinity, duration: 2 }}
+                      className="demo"
+                    >
+                      Demo
+                    </motion.div>
+                  )}
                   <PieChartProfitLoss
                     percentage={OPERATING_PROFIT_MARGIN_VALUE}
                   />
@@ -351,6 +424,20 @@ function MtoMDahsboard() {
                   <div className="precentage-text">OPERATING PROFIT MARGIN</div>
                 </div>
                 <div className="top-wrapper">
+                  {getTotalActualvalue[index][12] && (
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
+                      }}
+                      transition={{ repeat: Infinity, duration: 2 }}
+                      className="demo"
+                    >
+                      Demo
+                    </motion.div>
+                  )}
                   <PieChartProfitLoss percentage={NET_PROFIT_MARGIN_VALUE} />
                   <div className="precentage">{`${NET_PROFIT_MARGIN_VALUE}%`}</div>
                   <div className="precentage-text">NET PROFIT MARGIN</div>
@@ -363,6 +450,21 @@ function MtoMDahsboard() {
                     Mont to Month | YTD - Created in {getTotalDays[index]} at{" "}
                     {getTotalTimes[index]}
                   </p>
+
+                  {getTotalActualvalue[index][12] && (
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
+                      }}
+                      transition={{ repeat: Infinity, duration: 2 }}
+                      className="demo"
+                    >
+                      Demo
+                    </motion.div>
+                  )}
 
                   <ResponsiveContainer width="100%" height="100%">
                     <div className="chartcontainer">
@@ -402,6 +504,21 @@ function MtoMDahsboard() {
                 </div>
                 <div className="bottom-right">
                   <h1>INCOME STATEMENT</h1>
+                  {getTotalActualvalue[index][12] && (
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: { opacity: 1 },
+                      }}
+                      transition={{ repeat: Infinity, duration: 2 }}
+                      className="demo"
+                    >
+                      Demo
+                    </motion.div>
+                  )}
+
                   <div className="porfit-row">
                     <p>Revenue</p>
                     <p>{revenue} $</p>

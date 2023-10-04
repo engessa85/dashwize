@@ -1,12 +1,17 @@
 import axios from "axios";
-import { startFetching, startSuccess, startError } from "../redux/getProfitLossSlice";
+import {
+  startFetching,
+  startSuccess,
+  startError,
+} from "../redux/getProfitLossSlice";
 
 const getProfitLossApiCall = async (dispatch) => {
   const totalValueArray = [];
   const totalCreatedDate_day = [];
   const totalCreatedDate_hour = [];
-  // const url = "http://127.0.0.1:8000/api/dataentery/profitloss";
-  const url = "https://engessa1985.pythonanywhere.com/api/dataentery/profitloss";
+  const url = "http://127.0.0.1:8000/api/dataentery/profitloss";
+  // const url =
+  //   "https://engessa1985.pythonanywhere.com/api/dataentery/profitloss";
   const config = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accesstoken")}`,
@@ -40,8 +45,8 @@ const getProfitLossApiCall = async (dispatch) => {
       1000
     );
   } catch (error) {
+    console.log(error);
     dispatch(startError());
-    
   }
 };
 

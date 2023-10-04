@@ -87,7 +87,7 @@ function ProfitLossForm({ validate, setValidate }) {
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    if (nextButton) {
+    if (nextButton && !profitlossError) {
       profitLossApiCall(dispatch, profitLossArray);
       navigate("/mtm");
     }

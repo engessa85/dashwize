@@ -7,6 +7,7 @@ const getmtmtSlice = createSlice({
     getTotalTargetValue: [],
     getTotalDays: [],
     getTotalTimes: [],
+    getTotalDemos: [],
     pending: false,
     error: false,
   },
@@ -20,6 +21,7 @@ const getmtmtSlice = createSlice({
       state.getTotalTargetValue = action.payload.totaltargetValueArray;
       state.getTotalDays = action.payload.totalCreatedDate_day;
       state.getTotalTimes = action.payload.totalCreatedDate_hour;
+      state.getTotalDemos = action.payload.totalDemos;
     },
     startError: (state) => {
       state.pending = false;

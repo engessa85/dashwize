@@ -21,7 +21,7 @@ function UserHome() {
       localStorage.removeItem("email");
       navigate("/");
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -166,7 +166,7 @@ function UserHome() {
                 lead={"Let's break the myth that CRMs are all about data entry"}
                 linktext={"Learn More"}
                 path={"/dashboard"}
-                dataimport={"/dataimport"}
+                dataimport={"/mtm"}
                 payed={payment.payed_ceo}
               />
 
@@ -176,7 +176,7 @@ function UserHome() {
                 lead={"Let's break the myth that CRMs are all about data entry"}
                 linktext={"Learn More"}
                 path={"/dashboard"}
-                dataimport={"/dataimport"}
+                dataimport={"/mtm"}
                 payed={payment.payed_ceo}
               />
 
@@ -186,7 +186,7 @@ function UserHome() {
                 lead={"Let's break the myth that CRMs are all about data entry"}
                 linktext={"Learn More"}
                 path={"/dashboard"}
-                dataimport={"/dataimport"}
+                dataimport={"/mtm"}
                 payed={payment.payed_ceo}
               />
             </section>
@@ -197,7 +197,7 @@ function UserHome() {
                 lead={"Let's break the myth that CRMs are all about data entry"}
                 linktext={"Learn More"}
                 path={"/dashboard"}
-                dataimport={"/dataimport"}
+                dataimport={"/mtm"}
                 payed={payment.payed_ceo}
               />
 
@@ -207,7 +207,7 @@ function UserHome() {
                 lead={"Let's break the myth that CRMs are all about data entry"}
                 linktext={"Learn More"}
                 path={"/dashboard"}
-                dataimport={"/dataimport"}
+                dataimport={"/mtm"}
                 payed={payment.payed_ceo}
               />
 
@@ -217,7 +217,7 @@ function UserHome() {
                 lead={"Let's break the myth that CRMs are all about data entry"}
                 linktext={"Learn More"}
                 path={"/dashboard"}
-                dataimport={"/dataimport"}
+                dataimport={"/mtm"}
                 payed={payment.payed_ceo}
               />
             </section>
