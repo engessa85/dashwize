@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addDataActual, addDataTarget, resetError } from "../redux/mtmSlice";
 import { useNavigate } from "react-router-dom";
 import postMtMApiCall from "../services/postMtMApiCall";
+import SignInUpLoader from "./SignInUpLoader";
 
-function MtoMForm({ validate, setValidate, setNextForm }) {
+function MtoMForm({ setNextForm }) {
   const [emptyInput, setEmptyInput] = useState(false);
   const [wrongInput, setWrongInput] = useState(false);
   const [nextButton, setNextButton] = useState(false);
@@ -15,7 +16,8 @@ function MtoMForm({ validate, setValidate, setNextForm }) {
   const mtmactual = useSelector((state) => state.mtm.mtmdataActual);
   const mtmtarget = useSelector((state) => state.mtm.mtmdataTarget);
   const mtmterror = useSelector((state) => state.mtm.error);
-
+  const [validate, setValidate] = useState(false);
+  const [validLoader, setValidLoader] = useState(false);
 
   const actualArray = [];
   const targetArray = [];
@@ -61,15 +63,15 @@ function MtoMForm({ validate, setValidate, setNextForm }) {
       localStorage.removeItem("accesstoken");
       localStorage.removeItem("refreshtoken");
       localStorage.removeItem("email");
-      dispatch(resetError())
+      dispatch(resetError());
       navigate("/");
     }
   }, [mtmterror]);
 
   useEffect(() => {
-    if (validate) {
-      setValidate(false);
-      handelval();
+    if (validate && !mtmterror) {
+        postMtMApiCall(dispatch, mtmactual, mtmtarget);
+        setNextForm(true);
     }
   }, [validate]);
 
@@ -150,21 +152,45 @@ function MtoMForm({ validate, setValidate, setNextForm }) {
       setNextButton(true);
       dispatch(addDataActual(actualArray));
       dispatch(addDataTarget(targetArray));
+      setValidate(true);
     } else {
       setNextButton(false);
+      setValidate(false)
     }
   };
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    if (nextButton && !mtmterror) {
-      postMtMApiCall(dispatch,mtmactual, mtmtarget);
-      // navigate("/mtm")
-      setNextForm(true)
+    setValidLoader(true)
+    setTimeout(()=> {
+      setValidLoader(false)
+      handelval();
+    }, 2000)
+    
+  };
+
+  const handelSkip = (e) => {
+    e.preventDefault();
+    if (!mtmterror) {
+      postMtMApiCall(dispatch, mtmactual, mtmtarget);
+      setNextForm(true);
     }
   };
+
   return (
     <form>
+      {validLoader && (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingBottom: "10px",
+          }}
+        >
+          <SignInUpLoader middleCircleColor={"#2A3342"} />
+        </div>
+      )}
       <Table bordered hover>
         <thead>
           <tr>
@@ -560,11 +586,18 @@ function MtoMForm({ validate, setValidate, setNextForm }) {
       </Table>
       <div className="buttonscontainer">
         <button
-          className={nextButton ? "buttonnext" : "disablebutton"}
+          className={true ? "buttonnext" : "disablebutton"}
           type="submit"
           onClick={handelSubmit}
         >
           Next
+        </button>
+        <button
+          className={true ? "buttonskip" : "disablebutton"}
+          type="submit"
+          onClick={handelSkip}
+        >
+          Skip
         </button>
         <button className="buttonback" onClick={handelBack}>
           Back

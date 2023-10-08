@@ -4,24 +4,16 @@ import { useState, useEffect } from "react";
 import ProfitLossForm from "./ProfitLossForm";
 
 function ProfitLossMainForm() {
-  const [loader, setLoader] = useState(false);
   const [mainLoader, setMainLoader] = useState(true);
-  const [validate, setValidate] = useState(false);
+  
 
 
   useEffect(()=>{
     setTimeout(()=>{
       setMainLoader(false)
-    }, 3000)
+    }, 2000)
   })
 
-  const handelValidate = () => {
-    setLoader(true);
-    setTimeout(() => {
-      setLoader(false);
-        setValidate(true);
-    }, 2000);
-  };
 
   return (
     <div className="fillformcontainer__downside">
@@ -36,16 +28,8 @@ function ProfitLossMainForm() {
               <h2>Profit | Loss</h2>
               <p>Calculating profits and losses</p>
             </div>
-            <button className="validate" onClick={handelValidate}>
-              Validate
-            </button>
           </div>
-          {loader && (
-            <div className="loader">
-              <SignInUpLoader middleCircleColor={"#2A3342"} />
-            </div>
-          )}
-          {<ProfitLossForm validate={validate} setValidate={setValidate} />}
+          {<ProfitLossForm />}
         </div>
       )}
     </div>

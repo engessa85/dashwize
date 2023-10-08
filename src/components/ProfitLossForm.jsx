@@ -4,11 +4,15 @@ import profitLossApiCall from "../services/postProfitLossApiCall";
 import { useDispatch, useSelector } from "react-redux";
 import { addDataValue, resetError } from "../redux/profitLossSlice";
 import { useNavigate } from "react-router-dom";
+import SignInUpLoader from "./SignInUpLoader";
 
-function ProfitLossForm({ validate, setValidate }) {
+function ProfitLossForm() {
   const [emptyInput, setEmptyInput] = useState(false);
   const [wrongInput, setWrongInput] = useState(false);
   const [nextButton, setNextButton] = useState(false);
+  const [validate, setValidate] = useState(false);
+  const [validok, setValidOk] = useState(false);
+  const [validLoader, setValidLoader] = useState(false);
 
   const revenue = useRef(null);
   const const_of_goods_sold = useRef(null);
@@ -39,9 +43,9 @@ function ProfitLossForm({ validate, setValidate }) {
   }, [profitlossError]);
 
   useEffect(() => {
-    if (validate) {
-      setValidate(false);
-      handelval();
+    if (validate && !profitlossError) {
+      profitLossApiCall(dispatch, profitLossArray);
+      navigate("/mtm");
     }
   }, [validate]);
 
@@ -80,21 +84,47 @@ function ProfitLossForm({ validate, setValidate }) {
     if (ArrayValue.length === 8) {
       setNextButton(true);
       dispatch(addDataValue(ArrayValue));
+      setValidate(true);
     } else {
       setNextButton(false);
+      setValidate(false);
     }
   };
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    if (nextButton && !profitlossError) {
+    setValidLoader(true);
+    setTimeout(() => {
+      setValidLoader(false);
+      handelval();
+    }, 2000);
+    
+  };
+
+
+  const handelSkip = (e) => {
+    e.preventDefault();
+    if (!profitlossError) {
       profitLossApiCall(dispatch, profitLossArray);
       navigate("/mtm");
+      
     }
   };
 
   return (
     <form>
+      {validLoader && (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingBottom: "10px",
+          }}
+        >
+          <SignInUpLoader middleCircleColor={"#2A3342"} />
+        </div>
+      )}
       <Table bordered hover>
         <tbody>
           <tr>
@@ -244,11 +274,18 @@ function ProfitLossForm({ validate, setValidate }) {
       </Table>
       <div className="buttonscontainer">
         <button
-          className={nextButton ? "buttonnext" : "disablebutton"}
+          className={true ? "buttonnext" : "disablebutton"}
           type="submit"
           onClick={handelSubmit}
         >
           Next
+        </button>
+        <button
+          className={true ? "buttonskip" : "disablebutton"}
+          type="submit"
+          onClick={handelSkip}
+        >
+          Skip
         </button>
         <button className="buttonback" onClick={handelBack}>
           Back
