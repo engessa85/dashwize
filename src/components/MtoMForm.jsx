@@ -68,12 +68,27 @@ function MtoMForm({ setNextForm }) {
     }
   }, [mtmterror]);
 
+
+
+
+
   useEffect(() => {
     if (validate && !mtmterror) {
-        postMtMApiCall(dispatch, mtmactual, mtmtarget);
+      const demostate = false
+      const skipStatus = false
+        postMtMApiCall(dispatch, mtmactual, mtmtarget, demostate, skipStatus);
         setNextForm(true);
     }
   }, [validate]);
+
+
+
+
+
+
+
+
+
 
   const handelBack = (e) => {
     e.preventDefault();
@@ -169,13 +184,21 @@ function MtoMForm({ setNextForm }) {
     
   };
 
+
+
+
+  
   const handelSkip = (e) => {
+    const demostate = true
+    const skipStatus = true
     e.preventDefault();
     if (!mtmterror) {
-      postMtMApiCall(dispatch, mtmactual, mtmtarget);
+      postMtMApiCall(dispatch, mtmactual, mtmtarget, demostate, skipStatus);
       setNextForm(true);
     }
   };
+
+
 
   return (
     <form>

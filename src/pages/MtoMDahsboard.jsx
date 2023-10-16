@@ -67,6 +67,7 @@ function MtoMDahsboard() {
     getProfitTotalTimes,
     profitPending,
     profitError,
+    getTotalDemospro,
   } = useSelector((state) => state.getprofitloss);
 
   const dispatch = useDispatch();
@@ -94,6 +95,7 @@ function MtoMDahsboard() {
   let OPEX_RATION_VALUE;
   let OPERATING_PROFIT_MARGIN_VALUE;
   let NET_PROFIT_MARGIN_VALUE;
+
 
   useEffect(() => {
     async function fetch() {
@@ -242,7 +244,16 @@ function MtoMDahsboard() {
     navigate("/email");
   };
 
-  // console.log(getTotalDemos[0]);
+  const handelInsights = () => {
+
+    navigate("/insights", {
+      state: {
+        mtmdataActualValue: getTotalActualvalue[index],
+        mtmdataTargetValue: getTotalTargetValue[index],
+        profitloassValue:getProfitLosslvalue[index]
+      },
+    });
+  };
 
   return (
     <>
@@ -256,7 +267,7 @@ function MtoMDahsboard() {
               </div>
             </li>
 
-            <li>
+            <li onClick={handelInsights}>
               <div className="inner">
                 <MdInsights /> <span>Insights</span>
               </div>
@@ -328,7 +339,7 @@ function MtoMDahsboard() {
                     {element}
                     <span> @ </span>
                     {getTotalTimes[index]}
-                    {getTotalDemos[index] === true && (
+                    {getTotalDemos[index] === true && getTotalDemospro[index] === true ? (
                       <motion.div
                         initial="hidden"
                         animate="visible"
@@ -341,7 +352,7 @@ function MtoMDahsboard() {
                       >
                         Demo
                       </motion.div>
-                    )}
+                    ):null}
                   </div>
                 </span>
               ))}
@@ -365,7 +376,7 @@ function MtoMDahsboard() {
             <>
               <div className="top">
                 <div className="top-wrapper">
-                  {getTotalActualvalue[index][12] && (
+                  {getTotalDemospro[index] && (
                     <motion.div
                       initial="hidden"
                       animate="visible"
@@ -384,7 +395,7 @@ function MtoMDahsboard() {
                   <div className="precentage-text">GROSS PROFIT MARGIN</div>
                 </div>
                 <div className="top-wrapper">
-                  {getTotalActualvalue[index][12] && (
+                  {getTotalDemospro[index] && (
                     <motion.div
                       initial="hidden"
                       animate="visible"
@@ -403,7 +414,7 @@ function MtoMDahsboard() {
                   <div className="precentage-text">OPEX RATION</div>
                 </div>
                 <div className="top-wrapper">
-                  {getTotalActualvalue[index][12] && (
+                  {getTotalDemospro[index] && (
                     <motion.div
                       initial="hidden"
                       animate="visible"
@@ -424,7 +435,7 @@ function MtoMDahsboard() {
                   <div className="precentage-text">OPERATING PROFIT MARGIN</div>
                 </div>
                 <div className="top-wrapper">
-                  {getTotalActualvalue[index][12] && (
+                  {getTotalDemospro[index] && (
                     <motion.div
                       initial="hidden"
                       animate="visible"
@@ -443,6 +454,7 @@ function MtoMDahsboard() {
                   <div className="precentage-text">NET PROFIT MARGIN</div>
                 </div>
               </div>
+
               <div className="bottom">
                 <div className="bottom-left">
                   <h1>Earning before interest and Taxes</h1>
@@ -504,7 +516,7 @@ function MtoMDahsboard() {
                 </div>
                 <div className="bottom-right">
                   <h1>INCOME STATEMENT</h1>
-                  {getTotalActualvalue[index][12] && (
+                  {getTotalDemospro[index] && (
                     <motion.div
                       initial="hidden"
                       animate="visible"

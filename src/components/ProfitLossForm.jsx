@@ -44,7 +44,8 @@ function ProfitLossForm() {
 
   useEffect(() => {
     if (validate && !profitlossError) {
-      profitLossApiCall(dispatch, profitLossArray);
+      const demostate = false
+      profitLossApiCall(dispatch, profitLossArray, demostate);
       navigate("/mtm");
     }
   }, [validate]);
@@ -103,9 +104,10 @@ function ProfitLossForm() {
 
 
   const handelSkip = (e) => {
+    const demostate = true
     e.preventDefault();
     if (!profitlossError) {
-      profitLossApiCall(dispatch, profitLossArray);
+      profitLossApiCall(dispatch, profitLossArray, demostate);
       navigate("/mtm");
       
     }

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { startError } from "../redux/profitLossSlice";
 
-const profitLossApiCall = async (dispatch, ArrayValue) => {
+const profitLossApiCall = async (dispatch, ArrayValue, demostate) => {
   // const url = "https://engessa1985.pythonanywhere.com/api/dataentery/profitloss";
   const url = "http://127.0.0.1:8000/api/dataentery/profitloss";
   const config = {
@@ -19,7 +19,7 @@ const profitLossApiCall = async (dispatch, ArrayValue) => {
     other_income: ArrayValue[5],
     other_expenses: ArrayValue[6],
     interest_and_tax: ArrayValue[7],
-    demo:false
+    demo:demostate
     
   };
 

@@ -24,6 +24,7 @@ const getMtMApiCall = async (dispatch) => {
       const values = Object.values(elemet);
 
       const demo = values.slice(27, 28);
+      
 
       const raw_data = values.slice(1, 25);
       const actualValueArray = raw_data.slice(0, 12);

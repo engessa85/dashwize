@@ -6,6 +6,7 @@ const getProfitLossSlice = createSlice({
     getProfitLosslvalue: [],
     getProfitTotalDays: [],
     getProfitTotalTimes: [],
+    getTotalDemospro: [],
     profitPending: false,
     profitError: false,
   },
@@ -18,6 +19,7 @@ const getProfitLossSlice = createSlice({
       state.getProfitLosslvalue = action.payload.totalValueArray;
       state.getProfitTotalDays = action.payload.totalCreatedDate_day;
       state.getProfitTotalTimes = action.payload.totalCreatedDate_hour;
+      state.getTotalDemospro = action.payload.totalDemos;
     },
     startError: (state) => {
       state.profitPending = false;
