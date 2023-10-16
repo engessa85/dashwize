@@ -10,9 +10,9 @@ const getProfitLossApiCall = async (dispatch) => {
   const totalCreatedDate_day = [];
   const totalCreatedDate_hour = [];
   const totalDemos = []
-  const url = "http://127.0.0.1:8000/api/dataentery/profitloss";
-  // const url =
-  //   "https://engessa1985.pythonanywhere.com/api/dataentery/profitloss";
+  // const url = "http://127.0.0.1:8000/api/dataentery/profitloss";
+  const url =
+    "https://engessa1985.pythonanywhere.com/api/dataentery/profitloss";
   const config = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accesstoken")}`,

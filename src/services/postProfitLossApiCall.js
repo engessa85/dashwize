@@ -2,8 +2,8 @@ import axios from "axios";
 import { startError } from "../redux/profitLossSlice";
 
 const profitLossApiCall = async (dispatch, ArrayValue, demostate) => {
-  // const url = "https://engessa1985.pythonanywhere.com/api/dataentery/profitloss";
-  const url = "http://127.0.0.1:8000/api/dataentery/profitloss";
+  const url = "https://engessa1985.pythonanywhere.com/api/dataentery/profitloss";
+  // const url = "http://127.0.0.1:8000/api/dataentery/profitloss";
   const config = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accesstoken")}`,
