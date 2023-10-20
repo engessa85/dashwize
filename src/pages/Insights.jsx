@@ -5,7 +5,8 @@ import { useState } from "react";
 import SignInUpLoader from "../components/SignInUpLoader";
 import { useLocation } from "react-router-dom";
 
-const key = "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";
+// const key = "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";
+const key = "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";
 
 function Insights() {
   const [loader, setLoader] = useState(false);
