@@ -5,7 +5,8 @@ import { useState } from "react";
 import SignInUpLoader from "../components/SignInUpLoader";
 import { useLocation } from "react-router-dom";
 
-const key = "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";
+
+const key = "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";
 
 
 function Insights() {
