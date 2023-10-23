@@ -5,8 +5,8 @@ import { useState } from "react";
 import SignInUpLoader from "../components/SignInUpLoader";
 import { useLocation } from "react-router-dom";
 
-// const key = "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";
-const key = "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";
+const key = "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";
+
 
 function Insights() {
   const [loader, setLoader] = useState(false);
@@ -34,7 +34,7 @@ function Insights() {
 
     setOpenAIData("");
     const Apibody = {
-      model: "gpt-4",
+      model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: contentIs }],
       temperature: 0,
       max_tokens: 2048,
@@ -54,6 +54,7 @@ function Insights() {
         return data.json();
       })
       .then((data) => {
+        console.log(data);
         console.log(data.choices[0].message.content);
         setLoader(false);
         setOpenAIData(data.choices[0].message.content);
