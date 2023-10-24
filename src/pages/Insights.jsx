@@ -6,10 +6,11 @@ import SignInUpLoader from "../components/SignInUpLoader";
 import { useLocation } from "react-router-dom";
 
 
-const key = "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";
+
 
 
 function Insights() {
+  const key = process.env.REACT_APP_SECRET
   const [loader, setLoader] = useState(false);
   const [openAIData, setOpenAIData] = useState("");
   const location = useLocation();
@@ -22,9 +23,6 @@ function Insights() {
     const gottengetProfitLosslvalue =
       location.state && location.state.profitloassValue;
 
-    console.log(gottenmtmdataActualValue);
-    console.log(gottenmtmdataTargetValue);
-    console.log(gottengetProfitLosslvalue);
 
     const contentIs =
       "As my business and financial advisor, I would like you to provide me with a comprehensive analysis of my business data. Please present your insights in a clear and structured manner, organizing them by titles and points. Provide detailed information on all possible aspects related to my business, ensuring a precise and high-quality response." +
@@ -35,7 +33,7 @@ function Insights() {
 
     setOpenAIData("");
     const Apibody = {
-      model: "gpt-3.5-turbo",
+      model: "gpt-4",
       messages: [{ role: "user", content: contentIs }],
       temperature: 0,
       max_tokens: 2048,
@@ -55,8 +53,8 @@ function Insights() {
         return data.json();
       })
       .then((data) => {
-        console.log(data);
-        console.log(data.choices[0].message.content);
+        // console.log(data);
+        // console.log(data.choices[0].message.content);
         setLoader(false);
         setOpenAIData(data.choices[0].message.content);
       });
