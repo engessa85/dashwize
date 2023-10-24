@@ -54,7 +54,7 @@ function Insights() {
         return data.json();
       })
       .then((data) => {
-        // console.log(data);
+        console.log(data);
         // console.log(data.choices[0].message.content);
         setLoader(false);
         setOpenAIData(data.choices[0].message.content);
