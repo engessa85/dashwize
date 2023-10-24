@@ -10,6 +10,7 @@ import { useLocation } from "react-router-dom";
 
 
 function Insights() {
+  //key
   const key = process.env.REACT_APP_SECRET
   const [loader, setLoader] = useState(false);
   const [openAIData, setOpenAIData] = useState("");
